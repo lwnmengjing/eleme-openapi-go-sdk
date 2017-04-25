@@ -27,3 +27,15 @@ func (shop *Shop) MgetShopStatus(shopIds_ interface{}) (interface{}, error) {
 	return APIInterface(shop.config, "eleme.shop.mgetShopStatus", params)
 }
 
+// 设置送达时间
+// shopId 店铺Id
+// deliveryBasicMins 配送基准时间(单位分钟)
+// deliveryAdjustMins 配送调整时间(单位分钟)
+func (shop *Shop) SetDeliveryTime(shopId_ int64, deliveryBasicMins_ int, deliveryAdjustMins_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["deliveryBasicMins"] = deliveryBasicMins_
+	params["deliveryAdjustMins"] = deliveryAdjustMins_
+	return APIInterface(shop.config, "eleme.shop.setDeliveryTime", params)
+}
+
