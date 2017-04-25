@@ -113,3 +113,5 @@
 
 v1.1.0 增加接口确认订单送达  ReceivedOrder
 
+v1.2.0 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定商户开放）
+
