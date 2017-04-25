@@ -151,6 +151,7 @@ func genRequest(reqURL string, data url.Values, auth string) *http.Request {
 	req, _ := http.NewRequest("POST", reqURL, bytes.NewBufferString(data.Encode()))
 	req.Header.Set("authorization", auth)
 	req.Header.Set("accept-encoding", "gzip")
+	req.Header.Set("user-agent", "eleme-openapi-go-sdk")
 	req.Header.Set("content-type", "application/x-www-form-urlencoded; charset=utf-8")
 	return req
 }

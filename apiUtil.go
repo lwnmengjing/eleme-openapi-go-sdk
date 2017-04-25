@@ -77,6 +77,7 @@ func geneAPIRequest(config *Config, body ApiBody) *http.Request {
 	jsonBody, _ := json.Marshal(body)
 	req, _ := http.NewRequest(strMethod, strReqURL, strings.NewReader(string(jsonBody)))
 	req.Header.Set("content-type", "application/json")
+	req.Header.Set("user-agent", "eleme-openapi-go-sdk")
 	header, _ := json.Marshal(req.Header)
 	config.info(strReqURL)
 	config.info(string(jsonBody))

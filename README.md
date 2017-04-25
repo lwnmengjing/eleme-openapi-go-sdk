@@ -117,3 +117,5 @@ v1.2.0 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定�
 
 v1.3.0 增加接口设置送达时间 SetDeliveryTime （只针对特定商户开放）
 
+v1.3.1 增加 user-agent eleme-openapi-go-sdk 帮助 debug
+
