@@ -119,3 +119,5 @@ v1.3.0 增加接口设置送达时间 SetDeliveryTime （只针对特定商户�
 
 v1.3.1 增加 user-agent eleme-openapi-go-sdk 帮助 debug
 
+v1.4.0 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
+
