@@ -121,3 +121,5 @@ v1.3.1 增加 user-agent eleme-openapi-go-sdk 帮助 debug
 
 v1.4.0 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
 
+v1.5.0 增加接口查询商品后台分类  eleme.product.category.getBackCategory
+

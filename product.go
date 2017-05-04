@@ -59,6 +59,14 @@ func (category *Category) SetCategoryPositions(shopId_ int64, categoryIds_ inter
 	return APIInterface(category.config, "eleme.product.category.setCategoryPositions", params)
 }
 
+// 查询商品后台分类
+// shopId 店铺Id
+func (category *Category) GetBackCategory(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(category.config, "eleme.product.category.getBackCategory", params)
+}
+
 // 上传图片，返回图片的hash值
 // image 文件内容base64编码值
 func (file *File) UploadImage(image_ string) (interface{}, error) {
