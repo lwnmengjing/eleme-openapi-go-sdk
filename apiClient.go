@@ -7,7 +7,7 @@ type APIClient struct {
 	Product Product
 	User    User
 	File    File
-	Package Package
+	Packs   Packs
 	config  Config
 }
 
@@ -45,7 +45,7 @@ type Category struct {
 	config *Config
 }
 
-type Package struct {
+type Packs struct {
 	config *Config
 }
 
@@ -65,6 +65,6 @@ func (client *APIClient) SetConfig(config Config) {
 	client.User.config = &client.config
 	client.Shop.config = &client.config
 	client.File.config = &client.config
-	client.Package.config = &client.config
+	client.Packs.config = &client.config
 }
 

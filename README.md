@@ -123,3 +123,5 @@ v1.4.0 增加接口查询店铺当前生效合同类型 eleme.package.getEffectS
 
 v1.5.0 增加接口查询商品后台分类  eleme.product.category.getBackCategory
 
+v1.5.1 将签约服务 Package 重命名为 Packs
+
