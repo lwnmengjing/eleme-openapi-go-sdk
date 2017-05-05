@@ -95,3 +95,47 @@ func (order *Order) ReceivedOrder(orderId_ string) (interface{}, error) {
 	return APIInterface(order.config, "eleme.order.receivedOrder", params)
 }
 
+// 回复催单
+// remindId 催单Id
+// type 回复类别
+// content 回复内容
+func (order *Order) ReplyReminder(remindId_ string, type_ interface{}, content_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["remindId"] = remindId_
+	params["type"] = type_
+	params["content"] = content_
+	return APIInterface(order.config, "eleme.order.replyReminder", params)
+}
+
+// 获取指定订单菜品活动价格.
+// orderId 订单Id
+func (order *Order) GetCommodities(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(order.config, "eleme.order.getCommodities", params)
+}
+
+// 批量获取订单菜品活动价格
+// orderIds 订单Id列表
+func (order *Order) MgetCommodities(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.mgetCommodities", params)
+}
+
+// 获取订单退款信息
+// orderId 订单Id
+func (order *Order) GetRefundOrder(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(order.config, "eleme.order.getRefundOrder", params)
+}
+
+// 批量获取订单退款信息
+// orderIds 订单Id列表
+func (order *Order) MgetRefundOrders(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.mgetRefundOrders", params)
+}
+

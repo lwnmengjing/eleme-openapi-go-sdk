@@ -125,3 +125,5 @@ v1.5.0 增加接口查询商品后台分类  eleme.product.category.getBackCateg
 
 v1.5.1 将签约服务 Package 重命名为 Packs
 
+v1.6.0 在订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders 这五个接口
+
