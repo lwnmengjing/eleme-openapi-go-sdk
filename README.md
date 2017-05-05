@@ -12,7 +12,7 @@
 ### 安装
 
 ```go
-    go get git.coding.net/napos_openapi/eleme-openapi-php-sdk.git
+    go get git.coding.net/napos_openapi/eleme-openapi-go-sdk.git
 ```
 
 ### 基本用法
