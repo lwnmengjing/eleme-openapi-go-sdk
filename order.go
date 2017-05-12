@@ -98,7 +98,7 @@ func (order *Order) ReceivedOrder(orderId_ string) (interface{}, error) {
 // 回复催单
 // remindId 催单Id
 // type 回复类别
-// content 回复内容
+// content 回复内容,如果type为custom,content必填,回复内容不能超过30个字符
 func (order *Order) ReplyReminder(remindId_ string, type_ interface{}, content_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["remindId"] = remindId_
@@ -137,5 +137,23 @@ func (order *Order) MgetRefundOrders(orderIds_ interface{}) (interface{}, error)
 	params := make(map[string]interface{})
 	params["orderIds"] = orderIds_
 	return APIInterface(order.config, "eleme.order.mgetRefundOrders", params)
+}
+
+// 取消呼叫配送
+// orderId 订单Id
+func (order *Order) CancelDelivery(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(order.config, "eleme.order.cancelDelivery", params)
+}
+
+// 呼叫配送
+// orderId 订单Id
+// fee 小费,1-8之间的整数
+func (order *Order) CallDelivery(orderId_ string, fee_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["fee"] = fee_
+	return APIInterface(order.config, "eleme.order.callDelivery", params)
 }
 

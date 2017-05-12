@@ -9,12 +9,28 @@ func (category *Category) GetShopCategories(shopId_ int64) (interface{}, error) 
 	return APIInterface(category.config, "eleme.product.category.getShopCategories", params)
 }
 
+// 查询店铺商品分类，包含二级分类
+// shopId 店铺Id
+func (category *Category) GetShopCategoriesWithChildren(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(category.config, "eleme.product.category.getShopCategoriesWithChildren", params)
+}
+
 // 查询商品分类详情
 // categoryId 商品分类Id
 func (category *Category) GetCategory(categoryId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["categoryId"] = categoryId_
 	return APIInterface(category.config, "eleme.product.category.getCategory", params)
+}
+
+// 查询商品分类详情，包含二级分类
+// categoryId 商品分类Id
+func (category *Category) GetCategoryWithChildren(categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.getCategoryWithChildren", params)
 }
 
 // 添加商品分类
@@ -29,6 +45,20 @@ func (category *Category) CreateCategory(shopId_ int64, name_ string, descriptio
 	return APIInterface(category.config, "eleme.product.category.createCategory", params)
 }
 
+// 添加商品分类，支持二级分类
+// shopId 店铺Id
+// name 商品分类名称，长度需在50字以内
+// parentId 父分类ID，如果没有可以填0
+// description 商品分类描述，长度需在50字以内
+func (category *Category) CreateCategoryWithChildren(shopId_ int64, name_ string, parentId_ int64, description_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["name"] = name_
+	params["parentId"] = parentId_
+	params["description"] = description_
+	return APIInterface(category.config, "eleme.product.category.createCategoryWithChildren", params)
+}
+
 // 更新商品分类
 // categoryId 商品分类Id
 // name 商品分类名称，长度需在50字以内
@@ -39,6 +69,20 @@ func (category *Category) UpdateCategory(categoryId_ int64, name_ string, descri
 	params["name"] = name_
 	params["description"] = description_
 	return APIInterface(category.config, "eleme.product.category.updateCategory", params)
+}
+
+// 更新商品分类，包含二级分类
+// categoryId 商品分类Id
+// name 商品分类名称，长度需在50字以内
+// parentId 父分类ID，如果没有可以填0
+// description 商品分类描述，长度需在50字以内
+func (category *Category) UpdateCategoryWithChildren(categoryId_ int64, name_ string, parentId_ int64, description_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["name"] = name_
+	params["parentId"] = parentId_
+	params["description"] = description_
+	return APIInterface(category.config, "eleme.product.category.updateCategoryWithChildren", params)
 }
 
 // 删除商品分类
@@ -57,6 +101,16 @@ func (category *Category) SetCategoryPositions(shopId_ int64, categoryIds_ inter
 	params["shopId"] = shopId_
 	params["categoryIds"] = categoryIds_
 	return APIInterface(category.config, "eleme.product.category.setCategoryPositions", params)
+}
+
+// 设置二级分类排序
+// shopId 饿了么店铺Id
+// categoryWithChildrenIds 需要排序的父分类Id，及其下属的二级分类ID
+func (category *Category) SetCategoryPositionsWithChildren(shopId_ int64, categoryWithChildrenIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryWithChildrenIds"] = categoryWithChildrenIds_
+	return APIInterface(category.config, "eleme.product.category.setCategoryPositionsWithChildren", params)
 }
 
 // 查询商品后台分类
@@ -219,5 +273,15 @@ func (item *Item) ClearAndTimingMaxStock(clearStocks_ interface{}) (interface{},
 	params := make(map[string]interface{})
 	params["clearStocks"] = clearStocks_
 	return APIInterface(item.config, "eleme.product.item.clearAndTimingMaxStock", params)
+}
+
+// 批量修改商品价格
+// shopId 店铺Id
+// specPrices 商品Id及其下SkuId和价格对应Map
+func (item *Item) BatchUpdatePrices(shopId_ int64, specPrices_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["specPrices"] = specPrices_
+	return APIInterface(item.config, "eleme.product.item.batchUpdatePrices", params)
 }
 

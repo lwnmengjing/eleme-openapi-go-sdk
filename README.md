@@ -111,19 +111,33 @@
 
 ### Change Log
 
-v1.1.0 增加接口确认订单送达  ReceivedOrder
+#### v1.1.0 
+- 增加接口确认订单送达  ReceivedOrder
 
-v1.2.0 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定商户开放）
+#### v1.2.0 
+- 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定商户开放）
 
-v1.3.0 增加接口设置送达时间 SetDeliveryTime （只针对特定商户开放）
+#### v1.3.0
+- 增加接口设置送达时间 SetDeliveryTime （只针对特定商户开放）
 
-v1.3.1 增加 user-agent eleme-openapi-go-sdk 帮助 debug
+#### v1.3.1
+- 增加 user-agent eleme-openapi-go-sdk 帮助 debug
 
-v1.4.0 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
+#### v1.4.0
+- 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
 
-v1.5.0 增加接口查询商品后台分类  eleme.product.category.getBackCategory
+#### v1.5.0
+- 增加接口查询商品后台分类  eleme.product.category.getBackCategory
 
-v1.5.1 将签约服务 Package 重命名为 Packs
+v1.5.1
+- 将签约服务 Package 重命名为 Packs
 
-v1.6.0 在订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders 这五个接口
+#### v1.6.0
+- 在订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders 这五个接口
+
+#### v1.7.0
+- 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
+- 在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
+- 在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性
+- 在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口
 
