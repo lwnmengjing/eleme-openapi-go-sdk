@@ -113,7 +113,7 @@ func (category *Category) SetCategoryPositionsWithChildren(shopId_ int64, catego
 	return APIInterface(category.config, "eleme.product.category.setCategoryPositionsWithChildren", params)
 }
 
-// 查询商品后台分类
+// 查询商品后台类目
 // shopId 店铺Id
 func (category *Category) GetBackCategory(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -273,6 +273,26 @@ func (item *Item) ClearAndTimingMaxStock(clearStocks_ interface{}) (interface{},
 	params := make(map[string]interface{})
 	params["clearStocks"] = clearStocks_
 	return APIInterface(item.config, "eleme.product.item.clearAndTimingMaxStock", params)
+}
+
+// 根据商品扩展码获取商品
+// shopId 店铺Id
+// extendCode 商品扩展码
+func (item *Item) GetItemByShopIdAndExtendCode(shopId_ int64, extendCode_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["extendCode"] = extendCode_
+	return APIInterface(item.config, "eleme.product.item.getItemByShopIdAndExtendCode", params)
+}
+
+// 根据商品条形码获取商品
+// shopId 店铺Id
+// barCode 商品条形码
+func (item *Item) GetItemsByShopIdAndBarCode(shopId_ int64, barCode_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["barCode"] = barCode_
+	return APIInterface(item.config, "eleme.product.item.getItemsByShopIdAndBarCode", params)
 }
 
 // 批量修改商品价格
