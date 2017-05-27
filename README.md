@@ -112,17 +112,20 @@
 ## Change Log
 ### [1.9.0]
 	Release Date : 2017-05-27
+
 - [Feature] 在订单服务中增加了若干订单操作的轻量接口
 - [Feature] 在用户服务中增加了 eleme.user.getPhoneNumber 获取当前授权帐号的手机号的接口
 - [Feature] 在店铺服务中增加了 eleme.shop.setOnlineRefund 设置是否支持在线退单
 
 ### [1.8.0]
 	Release Date : 2017-05-18
+
 - [Feature] 在商品服务中增加了eleme.product.item.getItemByShopIdAndExtendCode 根据商品扩展码获取商品和eleme.product.item.getItemsByShopIdAndBarCode 根据商品条形码获取商品这两个新接口
 - [Feature] 在订单服务中增加了 eleme.order.getUnreplyReminders 获取店铺未回复的催单；eleme.order.getUnprocessOrders 查询店铺未处理订单；eleme.order.getCancelOrders 查询店铺未处理的取消单；eleme.order.getRefundOrders 查询店铺未处理的退单；eleme.order.getAllOrders 查询全部订单这五个新接口
 
 ### [1.7.0]
 	Release Date : 2017-05-12
+
 - [Feature] 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
 - [Feature] 在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
 - [Feature] 在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性
@@ -130,33 +133,41 @@
 
 ### [1.6.0]
 	Release Date : 2017-05-8
+
 - [Feature] 在订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders 这五个接口
 
 ### [1.5.1]
 	Release Date : 2017-05-5
+
 - [Feature] 将签约服务 Package 重命名为 Packs
 
 ### [1.5.0]
 	Release Date : 2017-04-25
+
 - [Feature] 增加接口查询商品后台分类  eleme.product.category.getBackCategory
 
 ### [1.4.0]
 	Release Date : 2017-04-21
+
 - [Feature] 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
 
 ### [1.3.1]
 	Release Date : 2017-04-21
+
 - [Feature] 增加 user-agent eleme-openapi-go-sdk 帮助 debug
 
 ### [1.3.0]
 	Release Date : 2017-04-14
+
 - [Feature] 增加接口设置送达时间 SetDeliveryTime （只针对特定商户开放）
 
 ### [1.2.0]
 	Release Date : 2017-4-11
+
 - [Feature] 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定商户开放）
 
 ### [1.1.0]
 	Release Date : 2017-04-7
+
 - [Feature] 增加接口确认订单送达  ReceivedOrder
 
