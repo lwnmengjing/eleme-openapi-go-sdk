@@ -9,13 +9,13 @@
   5. 上线前调用 Config.SetSandbox 为 false 以及填入正式环境的 key 和 secret
  
 
-### 安装
+## 安装
 
 ```go
     go get git.coding.net/napos_openapi/eleme-openapi-go-sdk.git
 ```
 
-### 基本用法
+## 基本用法
 
 ```go
     import openapi "git.coding.net/napos_openapi/eleme-openapi-go-sdk.git"
@@ -34,12 +34,12 @@
 
 ```
 
-### Token获取
+## Token获取
 企业应用与个人应用的 token 获取方法略有不同。
 
 实际使用过程中，在 token 获取成功后，该 token 可以使用较长一段时间，需要缓存起来，请勿每次请求都重新获取 token。
 
-#### 企业应用
+### 企业应用
 
 
 ```go
@@ -68,7 +68,7 @@
 ```
 
 
-#### 个人应用
+### 个人应用
 
 ```go
     import openapi "git.coding.net/napos_openapi/eleme-openapi-go-sdk.git"
@@ -90,7 +90,7 @@
 ```
 
 
-### Demo使用方法
+## Demo使用方法
 
 该 demo 主要用来演示企业应用的授权流程和展示应用信息
 
@@ -109,39 +109,54 @@
 6. 使用沙箱店铺的账号密码在 napos 客户端登陆，会发现刚刚授权的应用已安装，并能够打开应用跳转回调页，展示店铺信息
 
 
-### Change Log
+## Change Log
+### [1.9.0]
+	Release Date : 2017-05-27
+- [Feature] 在订单服务中增加了若干订单操作的轻量接口
+- [Feature] 在用户服务中增加了 eleme.user.getPhoneNumber 获取当前授权帐号的手机号的接口
+- [Feature] 在店铺服务中增加了 eleme.shop.setOnlineRefund 设置是否支持在线退单
 
-#### v1.1.0 
-- 增加接口确认订单送达  ReceivedOrder
+### [1.8.0]
+	Release Date : 2017-05-18
+- [Feature] 在商品服务中增加了eleme.product.item.getItemByShopIdAndExtendCode 根据商品扩展码获取商品和eleme.product.item.getItemsByShopIdAndBarCode 根据商品条形码获取商品这两个新接口
+- [Feature] 在订单服务中增加了 eleme.order.getUnreplyReminders 获取店铺未回复的催单；eleme.order.getUnprocessOrders 查询店铺未处理订单；eleme.order.getCancelOrders 查询店铺未处理的取消单；eleme.order.getRefundOrders 查询店铺未处理的退单；eleme.order.getAllOrders 查询全部订单这五个新接口
 
-#### v1.2.0 
-- 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定商户开放）
+### [1.7.0]
+	Release Date : 2017-05-12
+- [Feature] 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
+- [Feature] 在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
+- [Feature] 在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性
+- [Feature] 在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口
 
-#### v1.3.0
-- 增加接口设置送达时间 SetDeliveryTime （只针对特定商户开放）
+### [1.6.0]
+	Release Date : 2017-05-8
+- [Feature] 在订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders 这五个接口
 
-#### v1.3.1
-- 增加 user-agent eleme-openapi-go-sdk 帮助 debug
+### [1.5.1]
+	Release Date : 2017-05-5
+- [Feature] 将签约服务 Package 重命名为 Packs
 
-#### v1.4.0
-- 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
+### [1.5.0]
+	Release Date : 2017-04-25
+- [Feature] 增加接口查询商品后台分类  eleme.product.category.getBackCategory
 
-#### v1.5.0
-- 增加接口查询商品后台分类  eleme.product.category.getBackCategory
+### [1.4.0]
+	Release Date : 2017-04-21
+- [Feature] 增加接口查询店铺当前生效合同类型 eleme.package.getEffectServicePackContract
 
-v1.5.1
-- 将签约服务 Package 重命名为 Packs
+### [1.3.1]
+	Release Date : 2017-04-21
+- [Feature] 增加 user-agent eleme-openapi-go-sdk 帮助 debug
 
-#### v1.6.0
-- 在订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders 这五个接口
+### [1.3.0]
+	Release Date : 2017-04-14
+- [Feature] 增加接口设置送达时间 SetDeliveryTime （只针对特定商户开放）
 
-#### v1.7.0
-- 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
-- 在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
-- 在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性
-- 在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口
+### [1.2.0]
+	Release Date : 2017-4-11
+- [Feature] 增加接口批量沽清库存 ClearAndTimingMaxStock （只针对特定商户开放）
 
-#### v1.8.0
-- 在商品服务中增加了eleme.product.item.getItemByShopIdAndExtendCode 根据商品扩展码获取商品和eleme.product.item.getItemsByShopIdAndBarCode 根据商品条形码获取商品这两个新接口
-- 在订单服务中增加了 eleme.order.getUnreplyReminders 获取店铺未回复的催单；eleme.order.getUnprocessOrders 查询店铺未处理订单；eleme.order.getCancelOrders 查询店铺未处理的取消单；eleme.order.getRefundOrders 查询店铺未处理的退单；eleme.order.getAllOrders 查询全部订单这五个新接口
+### [1.1.0]
+	Release Date : 2017-04-7
+- [Feature] 增加接口确认订单送达  ReceivedOrder
 

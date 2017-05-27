@@ -39,3 +39,13 @@ func (shop *Shop) SetDeliveryTime(shopId_ int64, deliveryBasicMins_ int, deliver
 	return APIInterface(shop.config, "eleme.shop.setDeliveryTime", params)
 }
 
+// 设置是否支持在线退单
+// shopId 店铺Id
+// enable 是否支持
+func (shop *Shop) SetOnlineRefund(shopId_ int64, enable_ bool) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["enable"] = enable_
+	return APIInterface(shop.config, "eleme.shop.setOnlineRefund", params)
+}
+
