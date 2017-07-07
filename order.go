@@ -221,7 +221,7 @@ func (order *Order) CallDelivery(orderId_ string, fee_ int) (interface{}, error)
 
 // 获取店铺未回复的催单
 // shopId 店铺id
-func (order *Order) GetUnreplyReminders(shopId_ int) (interface{}, error) {
+func (order *Order) GetUnreplyReminders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(order.config, "eleme.order.getUnreplyReminders", params)
@@ -229,7 +229,7 @@ func (order *Order) GetUnreplyReminders(shopId_ int) (interface{}, error) {
 
 // 查询店铺未处理订单
 // shopId 店铺id
-func (order *Order) GetUnprocessOrders(shopId_ int) (interface{}, error) {
+func (order *Order) GetUnprocessOrders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(order.config, "eleme.order.getUnprocessOrders", params)
@@ -237,7 +237,7 @@ func (order *Order) GetUnprocessOrders(shopId_ int) (interface{}, error) {
 
 // 查询店铺未处理的取消单
 // shopId 店铺id
-func (order *Order) GetCancelOrders(shopId_ int) (interface{}, error) {
+func (order *Order) GetCancelOrders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(order.config, "eleme.order.getCancelOrders", params)
@@ -245,7 +245,7 @@ func (order *Order) GetCancelOrders(shopId_ int) (interface{}, error) {
 
 // 查询店铺未处理的退单
 // shopId 店铺id
-func (order *Order) GetRefundOrders(shopId_ int) (interface{}, error) {
+func (order *Order) GetRefundOrders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(order.config, "eleme.order.getRefundOrders", params)
@@ -253,10 +253,10 @@ func (order *Order) GetRefundOrders(shopId_ int) (interface{}, error) {
 
 // 查询全部订单
 // shopId 店铺id
-// pageNo 页码。取值范围:大于零的整数最大限制为100; 默认值:1
-// pageSize 每页获取条数。默认值20，最小值1，最大值50。
+// pageNo 页码。取值范围:大于零的整数最大限制为100
+// pageSize 每页获取条数。最小值1，最大值50。
 // date 日期,默认当天,格式:yyyy-MM-dd
-func (order *Order) GetAllOrders(shopId_ int, pageNo_ int, pageSize_ int, date_ string) (interface{}, error) {
+func (order *Order) GetAllOrders(shopId_ int64, pageNo_ int, pageSize_ int, date_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	params["pageNo"] = pageNo_

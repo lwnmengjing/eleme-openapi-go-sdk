@@ -110,6 +110,15 @@
 
 
 ## Change Log
+### [1.10.0]
+	Release Date : 2017-07-07
+
+- [Feature] 新增了两个金融服务的特权接口 eleme.finance.queryBalance 和 eleme.finance.queryBalanceLog
+- [Feature] 在商品服务中添加了查看活动商品的接口 eleme.product.item.getItemIdsHasActivityByShopId
+- [Feature] 在商品服务中 OItem 实体类中 specs 里新增了一个 activityLevel 的属性
+- [Feature] 订单服务中 shopId 由原来的 int 变为 int64
+- [Feature] 订单服务中 OOrder 实体新增了纳税人识别号  taxpayerId 属性
+
 ### [1.9.0]
 	Release Date : 2017-05-27
 

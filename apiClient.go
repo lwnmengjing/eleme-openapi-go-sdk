@@ -8,6 +8,7 @@ type APIClient struct {
 	User    User
 	File    File
 	Packs   Packs
+	Finance Finance
 	config  Config
 }
 
@@ -49,6 +50,10 @@ type Packs struct {
 	config *Config
 }
 
+type Finance struct {
+	config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -66,5 +71,6 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Shop.config = &client.config
 	client.File.config = &client.config
 	client.Packs.config = &client.config
+	client.Finance.config = &client.config
 }
 

@@ -297,11 +297,19 @@ func (item *Item) GetItemsByShopIdAndBarCode(shopId_ int64, barCode_ string) (in
 
 // 批量修改商品价格
 // shopId 店铺Id
-// specPrices 商品Id及其下SkuId和价格对应Map
+// specPrices 商品Id及其下SkuId和价格对应Map(限制最多50个)
 func (item *Item) BatchUpdatePrices(shopId_ int64, specPrices_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	params["specPrices"] = specPrices_
 	return APIInterface(item.config, "eleme.product.item.batchUpdatePrices", params)
+}
+
+// 查询活动商品
+// shopId 店铺Id
+func (item *Item) GetItemIdsHasActivityByShopId(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(item.config, "eleme.product.item.getItemIdsHasActivityByShopId", params)
 }
 
