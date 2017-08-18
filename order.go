@@ -265,3 +265,27 @@ func (order *Order) GetAllOrders(shopId_ int64, pageNo_ int, pageSize_ int, date
 	return APIInterface(order.config, "eleme.order.getAllOrders", params)
 }
 
+// 批量查询订单是否支持索赔
+// orderIds 索赔订单Id的列表
+func (order *Order) QuerySupportedCompensationOrders(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.querySupportedCompensationOrders", params)
+}
+
+// 批量申请索赔
+// requests 索赔请求的列表
+func (order *Order) BatchApplyCompensations(requests_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["requests"] = requests_
+	return APIInterface(order.config, "eleme.order.batchApplyCompensations", params)
+}
+
+// 批量查询索赔结果
+// orderIds 索赔订单Id的列表
+func (order *Order) QueryCompensationOrders(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.queryCompensationOrders", params)
+}
+
