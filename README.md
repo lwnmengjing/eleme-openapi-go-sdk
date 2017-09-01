@@ -110,6 +110,12 @@
 
 
 ## Change Log
+### [1.13.0]
+	Release Date : 2017-09-01
+
+- [Feature] 新增了限时抢购活动服务的接口
+- [Feature] 新增了订单评论服务的接口
+
 ### [1.12.0]
 	Release Date : 2017-08-18
 

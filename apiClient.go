@@ -1,15 +1,17 @@
 package elemeOpenApi
 
 type APIClient struct {
-	Message Message
-	Order   Order
-	Shop    Shop
-	Product Product
-	User    User
-	File    File
-	Packs   Packs
-	Finance Finance
-	config  Config
+	Message  Message
+	Order    Order
+	Shop     Shop
+	Product  Product
+	User     User
+	File     File
+	Packs    Packs
+	Finance  Finance
+  Activity Activity
+  UGC      UGC
+	config   Config
 }
 
 type User struct {
@@ -54,6 +56,19 @@ type Finance struct {
 	config *Config
 }
 
+type Flash struct {
+  config *Config
+}
+
+type Activity struct {
+  Flash Flash
+  config *Config
+}
+
+type UGC struct {
+  config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -72,5 +87,8 @@ func (client *APIClient) SetConfig(config Config) {
 	client.File.config = &client.config
 	client.Packs.config = &client.config
 	client.Finance.config = &client.config
+  client.Activity.config = &client.config
+  client.Activity.flash.config = &client.config
+  client.UGC.config = &client.config
 }
 

@@ -1,6 +1,30 @@
 // 商品服务 
 package elemeOpenApi
 
+// 上传图片，返回图片的hash值
+// image 文件内容base64编码值
+func (file *File) UploadImage(image_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["image"] = image_
+	return APIInterface(file.config, "eleme.file.uploadImage", params)
+}
+
+// 通过远程URL上传图片，返回图片的hash值
+// url 远程Url地址
+func (file *File) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["url"] = url_
+	return APIInterface(file.config, "eleme.file.uploadImageWithRemoteUrl", params)
+}
+
+// 获取上传文件的访问URL，返回文件的Url地址
+// hash 图片hash值
+func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["hash"] = hash_
+	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
+}
+
 // 查询店铺商品分类
 // shopId 店铺Id
 func (category *Category) GetShopCategories(shopId_ int64) (interface{}, error) {
@@ -119,30 +143,6 @@ func (category *Category) GetBackCategory(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(category.config, "eleme.product.category.getBackCategory", params)
-}
-
-// 上传图片，返回图片的hash值
-// image 文件内容base64编码值
-func (file *File) UploadImage(image_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["image"] = image_
-	return APIInterface(file.config, "eleme.file.uploadImage", params)
-}
-
-// 通过远程URL上传图片，返回图片的hash值
-// url 远程Url地址
-func (file *File) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["url"] = url_
-	return APIInterface(file.config, "eleme.file.uploadImageWithRemoteUrl", params)
-}
-
-// 获取上传文件的访问URL，返回文件的Url地址
-// hash 图片hash值
-func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["hash"] = hash_
-	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
 }
 
 // 获取一个分类下的所有商品
