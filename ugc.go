@@ -174,11 +174,9 @@ func (ugc *Ugc) ReplyRateByOrderId(orderId_ string, reply_ string) (interface{},
 // 批量回复订单未回复的评论
 // orderIds 订单id
 // reply 回复信息
-// reply 回复信息
-func (ugc *Ugc) ReplyCommentByOrderIds(orderIds_ interface{}, reply_ string, reply_ string) (interface{}, error) {
+func (ugc *Ugc) ReplyCommentByOrderIds(orderIds_ interface{}, reply_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["orderIds"] = orderIds_
-	params["reply"] = reply_
 	params["reply"] = reply_
 	return APIInterface(ugc.config, "eleme.ugc.replyCommentByOrderIds", params)
 }
