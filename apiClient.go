@@ -10,7 +10,7 @@ type APIClient struct {
 	Packs    Packs
 	Finance  Finance
   Activity Activity
-  UGC      UGC
+  Ugc      Ugc
 	config   Config
 }
 
@@ -65,7 +65,7 @@ type Activity struct {
   config *Config
 }
 
-type UGC struct {
+type Ugc struct {
   config *Config
 }
 
@@ -88,7 +88,7 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Packs.config = &client.config
 	client.Finance.config = &client.config
   client.Activity.config = &client.config
-  client.Activity.flash.config = &client.config
-  client.UGC.config = &client.config
+  client.Activity.Flash.config = &client.config
+  client.Ugc.config = &client.config
 }
 
