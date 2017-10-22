@@ -96,12 +96,14 @@ func (ugc *Ugc) GetOrderRatesByShopAndRating(shopId_ string, score_ int, startTi
 // startTime   开始时间,只能查询最近90天的数据
 // endTime   结束时间
 // offset 页面偏移量
-func (ugc *Ugc) GetItemRatesByItemId(itemId_ string, startTime_ interface{}, endTime_ interface{}, offset_ int) (interface{}, error) {
+// pageSize 页面大小
+func (ugc *Ugc) GetItemRatesByItemId(itemId_ string, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
 	params["startTime"] = startTime_
 	params["endTime"] = endTime_
 	params["offset"] = offset_
+	params["pageSize"] = pageSize_
 	return APIInterface(ugc.config, "eleme.ugc.getItemRatesByItemId", params)
 }
 

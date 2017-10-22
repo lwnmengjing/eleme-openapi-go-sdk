@@ -1,6 +1,58 @@
 // 活动服务 
 package elemeOpenApi
 
+// 创建代金券活动
+// createInfo 创建代金券活动的结构体
+func (coupon *Coupon) CreateCouponActivity(createInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["createInfo"] = createInfo_
+	return APIInterface(coupon.config, "eleme.activity.coupon.createCouponActivity", params)
+}
+
+// 向指定用户发放代金券
+// shopId 店铺Id
+// couponActivityId 代金券活动Id
+// mobiles 需要发放代金券的用户手机号列表
+func (coupon *Coupon) GiveOutCoupons(shopId_ int64, couponActivityId_ int64, mobiles_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["couponActivityId"] = couponActivityId_
+	params["mobiles"] = mobiles_
+	return APIInterface(coupon.config, "eleme.activity.coupon.giveOutCoupons", params)
+}
+
+// 分页查询店铺代金券活动信息
+// shopId 店铺Id
+// couponActivityType 代金券活动类型
+// activityStatus 活动状态
+// pageNo 页码（第几页）
+// pageSize 每页数量
+func (coupon *Coupon) QueryCouponActivities(shopId_ int64, couponActivityType_ interface{}, activityStatus_ interface{}, pageNo_ int, pageSize_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["couponActivityType"] = couponActivityType_
+	params["activityStatus"] = activityStatus_
+	params["pageNo"] = pageNo_
+	params["pageSize"] = pageSize_
+	return APIInterface(coupon.config, "eleme.activity.coupon.queryCouponActivities", params)
+}
+
+// 分页查询店铺代金券领取详情
+// shopId 店铺Id
+// couponActivityId 代金券活动Id
+// couponStatus 代金券状态
+// pageNo 页码（第几页）
+// pageSize 每页数量
+func (coupon *Coupon) QueryReceivedCouponDetails(shopId_ int64, couponActivityId_ int64, couponStatus_ interface{}, pageNo_ int, pageSize_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["couponActivityId"] = couponActivityId_
+	params["couponStatus"] = couponStatus_
+	params["pageNo"] = pageNo_
+	params["pageSize"] = pageSize_
+	return APIInterface(coupon.config, "eleme.activity.coupon.queryReceivedCouponDetails", params)
+}
+
 // 查询店铺邀约活动信息
 // shopId 店铺Id
 func (flash *Flash) GetInvitedActivityInfos(shopId_ int64) (interface{}, error) {

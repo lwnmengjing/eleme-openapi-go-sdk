@@ -145,6 +145,18 @@ func (category *Category) GetBackCategory(shopId_ int64) (interface{}, error) {
 	return APIInterface(category.config, "eleme.product.category.getBackCategory", params)
 }
 
+// 设置分类类型
+// shopId 店铺Id
+// categoryId 商品分类Id
+// categoryType 分类类型
+func (category *Category) SetCategoryType(shopId_ int64, categoryId_ int64, categoryType_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryId"] = categoryId_
+	params["categoryType"] = categoryType_
+	return APIInterface(category.config, "eleme.product.category.setCategoryType", params)
+}
+
 // 获取一个分类下的所有商品
 // categoryId 商品分类Id
 func (item *Item) GetItemsByCategoryId(categoryId_ int64) (interface{}, error) {
@@ -311,5 +323,17 @@ func (item *Item) GetItemIdsHasActivityByShopId(shopId_ int64) (interface{}, err
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(item.config, "eleme.product.item.getItemIdsHasActivityByShopId", params)
+}
+
+// 设置订单餐盒费
+// shopId  店铺ID
+// status 是否按照订单设置餐盒费
+// packingFee 订单餐盒费费用
+func (item *Item) SetOrderPackingFee(shopId_ int64, status_ bool, packingFee_ float64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["status"] = status_
+	params["packingFee"] = packingFee_
+	return APIInterface(item.config, "eleme.product.item.setOrderPackingFee", params)
 }
 
