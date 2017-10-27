@@ -110,6 +110,11 @@
 
 
 ## Change Log
+### [1.14.0]
+	Release Date : 2017-10-27
+
+- [Feature] 新增了代金券和零元试吃的活动接口
+
 ### [1.13.0]
 	Release Date : 2017-09-01
 

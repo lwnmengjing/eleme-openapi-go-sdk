@@ -53,6 +53,74 @@ func (coupon *Coupon) QueryReceivedCouponDetails(shopId_ int64, couponActivityId
 	return APIInterface(coupon.config, "eleme.activity.coupon.queryReceivedCouponDetails", params)
 }
 
+// 通过店铺Id查询该店铺被邀约的美食活动
+// shopId 店铺Id
+func (food *Food) QueryInvitedFoodActivities(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(food.config, "eleme.activity.food.queryInvitedFoodActivities", params)
+}
+
+// 报名美食活动
+// activityId 活动Id
+// activityApplyInfo 活动报名信息
+func (food *Food) ApplyFoodActivity(activityId_ int64, activityApplyInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["activityApplyInfo"] = activityApplyInfo_
+	return APIInterface(food.config, "eleme.activity.food.applyFoodActivity", params)
+}
+
+// 通过店铺Id和活动Id分页查询店铺已报名的美食活动
+// activityId 活动Id
+// shopId 店铺Id
+// pageNo 页码
+// pageSize 每页数量
+func (food *Food) QueryFoodActivities(activityId_ int64, shopId_ int64, pageNo_ int64, pageSize_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["shopId"] = shopId_
+	params["pageNo"] = pageNo_
+	params["pageSize"] = pageSize_
+	return APIInterface(food.config, "eleme.activity.food.queryFoodActivities", params)
+}
+
+// 修改美食活动的菜品库存
+// activityId 活动Id
+// shopId 店铺Id
+// itemId 菜品Id
+// stock 库存
+func (food *Food) UpdateFoodActivityItemStock(activityId_ int64, shopId_ int64, itemId_ int64, stock_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["shopId"] = shopId_
+	params["itemId"] = itemId_
+	params["stock"] = stock_
+	return APIInterface(food.config, "eleme.activity.food.updateFoodActivityItemStock", params)
+}
+
+// 取消参与了美食活动的菜品
+// activityId 活动Id
+// shopId 店铺Id
+// itemId 菜品Id
+func (food *Food) OfflineFoodActivityItem(activityId_ int64, shopId_ int64, itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["shopId"] = shopId_
+	params["itemId"] = itemId_
+	return APIInterface(food.config, "eleme.activity.food.offlineFoodActivityItem", params)
+}
+
+// 作废店铺与美食活动的关联关系
+// activityId 活动Id
+// shopId 店铺Id
+func (food *Food) UnbindFoodActivity(activityId_ int64, shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["shopId"] = shopId_
+	return APIInterface(food.config, "eleme.activity.food.unbindFoodActivity", params)
+}
+
 // 查询店铺邀约活动信息
 // shopId 店铺Id
 func (flash *Flash) GetInvitedActivityInfos(shopId_ int64) (interface{}, error) {
