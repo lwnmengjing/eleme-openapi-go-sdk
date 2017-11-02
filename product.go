@@ -25,6 +25,14 @@ func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
 	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
 }
 
+// 获取上传图片的url地址(新版)
+// hash 图片hash值
+func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["hash"] = hash_
+	return APIInterface(file.config, "eleme.file.getImageUrl", params)
+}
+
 // 查询店铺商品分类
 // shopId 店铺Id
 func (category *Category) GetShopCategories(shopId_ int64) (interface{}, error) {
@@ -117,6 +125,14 @@ func (category *Category) RemoveCategory(categoryId_ int64) (interface{}, error)
 	return APIInterface(category.config, "eleme.product.category.removeCategory", params)
 }
 
+// 删除商品分类(新版)
+// categoryId 商品分类Id
+func (category *Category) InvalidCategory(categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.invalidCategory", params)
+}
+
 // 设置分类排序
 // shopId 饿了么店铺Id
 // categoryIds 需要排序的分类Id
@@ -125,6 +141,16 @@ func (category *Category) SetCategoryPositions(shopId_ int64, categoryIds_ inter
 	params["shopId"] = shopId_
 	params["categoryIds"] = categoryIds_
 	return APIInterface(category.config, "eleme.product.category.setCategoryPositions", params)
+}
+
+// 设置分类排序(新版)
+// shopId 饿了么店铺Id
+// categoryIds 需要排序的全部一级分类Id
+func (category *Category) SetCategorySequence(shopId_ int64, categoryIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryIds"] = categoryIds_
+	return APIInterface(category.config, "eleme.product.category.setCategorySequence", params)
 }
 
 // 设置二级分类排序
@@ -237,6 +263,14 @@ func (item *Item) BatchOnShelf(specIds_ interface{}) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.batchOnShelf", params)
 }
 
+// 批量上架商品(新版)
+// itemIds 商品ID列表
+func (item *Item) BatchListItems(itemIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemIds"] = itemIds_
+	return APIInterface(item.config, "eleme.product.item.batchListItems", params)
+}
+
 // 批量下架商品
 // specIds 商品及商品规格的列表
 func (item *Item) BatchOffShelf(specIds_ interface{}) (interface{}, error) {
@@ -245,12 +279,28 @@ func (item *Item) BatchOffShelf(specIds_ interface{}) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.batchOffShelf", params)
 }
 
+// 批量下架商品(新版)
+// itemIds 商品ID列表
+func (item *Item) BatchDelistItems(itemIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemIds"] = itemIds_
+	return APIInterface(item.config, "eleme.product.item.batchDelistItems", params)
+}
+
 // 删除商品
 // itemId 商品Id
 func (item *Item) RemoveItem(itemId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
 	return APIInterface(item.config, "eleme.product.item.removeItem", params)
+}
+
+// 删除商品(新版)
+// itemId 商品Id
+func (item *Item) InvalidItem(itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	return APIInterface(item.config, "eleme.product.item.invalidItem", params)
 }
 
 // 批量删除商品
@@ -267,6 +317,14 @@ func (item *Item) BatchUpdateSpecStocks(specStocks_ interface{}) (interface{}, e
 	params := make(map[string]interface{})
 	params["specStocks"] = specStocks_
 	return APIInterface(item.config, "eleme.product.item.batchUpdateSpecStocks", params)
+}
+
+// 批量更新商品库存(新版)
+// stockMap 商品规格ID和库存设值的映射
+func (item *Item) BatchUpdateStock(stockMap_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["stockMap"] = stockMap_
+	return APIInterface(item.config, "eleme.product.item.batchUpdateStock", params)
 }
 
 // 设置商品排序
@@ -323,6 +381,14 @@ func (item *Item) GetItemIdsHasActivityByShopId(shopId_ int64) (interface{}, err
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(item.config, "eleme.product.item.getItemIdsHasActivityByShopId", params)
+}
+
+// 查询店铺活动商品(新版)
+// shopId 店铺Id
+func (item *Item) GetShopSalesItems(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(item.config, "eleme.product.item.getShopSalesItems", params)
 }
 
 // 设置订单餐盒费
