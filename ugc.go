@@ -31,7 +31,7 @@ func (ugc *Ugc) GetUnreplyOrderRatesByOrderIds(orderIds_ interface{}) (interface
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetOrderRatesByShopId(shopId_ string, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetOrderRatesByShopId(shopId_ string, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	params["startTime"] = startTime_
@@ -47,7 +47,7 @@ func (ugc *Ugc) GetOrderRatesByShopId(shopId_ string, startTime_ interface{}, en
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetOrderRatesByShopIds(shopIds_ interface{}, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetOrderRatesByShopIds(shopIds_ interface{}, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopIds"] = shopIds_
 	params["startTime"] = startTime_
@@ -63,7 +63,7 @@ func (ugc *Ugc) GetOrderRatesByShopIds(shopIds_ interface{}, startTime_ interfac
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetUnreplyOrderRatesByShopIds(shopIds_ interface{}, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetUnreplyOrderRatesByShopIds(shopIds_ interface{}, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopIds"] = shopIds_
 	params["startTime"] = startTime_
@@ -80,7 +80,7 @@ func (ugc *Ugc) GetUnreplyOrderRatesByShopIds(shopIds_ interface{}, startTime_ i
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetOrderRatesByShopAndRating(shopId_ string, score_ int, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetOrderRatesByShopAndRating(shopId_ string, score_ int, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	params["score"] = score_
@@ -97,7 +97,7 @@ func (ugc *Ugc) GetOrderRatesByShopAndRating(shopId_ string, score_ int, startTi
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetItemRatesByItemId(itemId_ string, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetItemRatesByItemId(itemId_ string, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
 	params["startTime"] = startTime_
@@ -113,7 +113,7 @@ func (ugc *Ugc) GetItemRatesByItemId(itemId_ string, startTime_ interface{}, end
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetItemRatesByItemIds(itemIds_ interface{}, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetItemRatesByItemIds(itemIds_ interface{}, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemIds"] = itemIds_
 	params["startTime"] = startTime_
@@ -129,7 +129,7 @@ func (ugc *Ugc) GetItemRatesByItemIds(itemIds_ interface{}, startTime_ interface
 // endTime   结束时间
 // offset 页面偏移量
 // pageSize 页面大小
-func (ugc *Ugc) GetUnreplyItemRatesByItemIds(itemIds_ interface{}, startTime_ interface{}, endTime_ interface{}, offset_ int, pageSize_ int) (interface{}, error) {
+func (ugc *Ugc) GetUnreplyItemRatesByItemIds(itemIds_ interface{}, startTime_ string, endTime_ string, offset_ int, pageSize_ int) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemIds"] = itemIds_
 	params["startTime"] = startTime_
@@ -188,7 +188,7 @@ func (ugc *Ugc) ReplyCommentByOrderIds(orderIds_ interface{}, reply_ string) (in
 // reply 回复内容
 // startTime   开始时间,只能查询最近90天的数据
 // endTime   结束时间
-func (ugc *Ugc) ReplyRatesByItemId(itemId_ string, reply_ string, startTime_ interface{}, endTime_ interface{}) (interface{}, error) {
+func (ugc *Ugc) ReplyRatesByItemId(itemId_ string, reply_ string, startTime_ string, endTime_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
 	params["reply"] = reply_
@@ -202,7 +202,7 @@ func (ugc *Ugc) ReplyRatesByItemId(itemId_ string, reply_ string, startTime_ int
 // reply 回复信息
 // startTime 开始时间,只能查询最近90天的数据
 // endTime 结束时间
-func (ugc *Ugc) ReplyRatesByItemIds(itemIds_ interface{}, reply_ string, startTime_ interface{}, endTime_ interface{}) (interface{}, error) {
+func (ugc *Ugc) ReplyRatesByItemIds(itemIds_ interface{}, reply_ string, startTime_ string, endTime_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemIds"] = itemIds_
 	params["reply"] = reply_

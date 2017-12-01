@@ -110,6 +110,7 @@ func (order *Order) BatchGetDeliveryStates(orderIds_ interface{}) (interface{}, 
 }
 
 // 配送异常或者物流拒单后选择自行配送(推荐)
+ 全推调用
 // orderId 订单Id
 func (order *Order) DeliveryBySelfLite(orderId_ string) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -126,6 +127,7 @@ func (order *Order) DeliveryBySelf(orderId_ string) (interface{}, error) {
 }
 
 // 配送异常或者物流拒单后选择不再配送(推荐)
+ 全推调用
 // orderId 订单Id
 func (order *Order) NoMoreDeliveryLite(orderId_ string) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -287,5 +289,13 @@ func (order *Order) QueryCompensationOrders(orderIds_ interface{}) (interface{},
 	params := make(map[string]interface{})
 	params["orderIds"] = orderIds_
 	return APIInterface(order.config, "eleme.order.queryCompensationOrders", params)
+}
+
+// 众包订单询价，获取配送费
+// orderId 订单Id
+func (order *Order) GetDeliveryFeeForCrowd(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(order.config, "eleme.order.getDeliveryFeeForCrowd", params)
 }
 

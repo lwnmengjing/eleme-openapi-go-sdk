@@ -18,7 +18,7 @@ func (finance *Finance) QueryBalanceLog(request_ interface{}) (interface{}, erro
 }
 
 // 查询总店账单
-// shopId 饿了么店总店店铺id
+// shopId 饿了么总店店铺id
 // query 查询条件
 func (finance *Finance) QueryHeadBills(shopId_ int64, query_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -28,7 +28,7 @@ func (finance *Finance) QueryHeadBills(shopId_ int64, query_ interface{}) (inter
 }
 
 // 查询总店订单
-// shopId 饿了么店总店店铺id
+// shopId 饿了么总店店铺id
 // query 查询条件
 func (finance *Finance) QueryHeadOrders(shopId_ int64, query_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -38,7 +38,7 @@ func (finance *Finance) QueryHeadOrders(shopId_ int64, query_ interface{}) (inte
 }
 
 // 查询分店账单
-// shopId 饿了么店总店店铺id
+// shopId 饿了么分店店铺id
 // query 查询条件
 func (finance *Finance) QueryBranchBills(shopId_ int64, query_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -48,7 +48,7 @@ func (finance *Finance) QueryBranchBills(shopId_ int64, query_ interface{}) (int
 }
 
 // 查询分店订单
-// shopId 饿了么店总店店铺id
+// shopId 饿了么分店店铺id
 // query 查询条件
 func (finance *Finance) QueryBranchOrders(shopId_ int64, query_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -58,7 +58,7 @@ func (finance *Finance) QueryBranchOrders(shopId_ int64, query_ interface{}) (in
 }
 
 // 查询订单
-// shopId 饿了么店总店店铺id
+// shopId 饿了么店铺id
 // orderId 订单id
 func (finance *Finance) GetOrder(shopId_ int64, orderId_ string) (interface{}, error) {
 	params := make(map[string]interface{})

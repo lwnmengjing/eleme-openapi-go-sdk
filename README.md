@@ -110,6 +110,12 @@
 
 
 ## Change Log
+
+### [1.15.0]
+	Release Date : 2017-12-1
+
+- [Feature] 新增众包查询配送费接口
+
 ### [1.14.0]
 	Release Date : 2017-10-27
 
