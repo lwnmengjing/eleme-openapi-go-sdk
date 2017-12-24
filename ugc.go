@@ -211,3 +211,31 @@ func (ugc *Ugc) ReplyRatesByItemIds(itemIds_ interface{}, reply_ string, startTi
 	return APIInterface(ugc.config, "eleme.ugc.replyRatesByItemIds", params)
 }
 
+// 通过rateId和shopId 回复指定类型的评论
+// rateId 评论编号
+// shopId  餐厅id
+// replyType 评论类型
+// reply 回复的内容
+func (ugc *Ugc) ReplyRateByRateIdAndShopId(rateId_ string, shopId_ string, replyType_ interface{}, reply_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateId"] = rateId_
+	params["shopId"] = shopId_
+	params["replyType"] = replyType_
+	params["reply"] = reply_
+	return APIInterface(ugc.config, "eleme.ugc.replyRateByRateIdAndShopId", params)
+}
+
+// 通过rateIds和shopId 批量回复指定类型的评论
+// rateIds  评论编号
+// shopId  餐厅id
+// replyType 评论类型
+// reply 回复的内容
+func (ugc *Ugc) ReplyRateByRateIdsAndShopId(rateIds_ interface{}, shopId_ string, replyType_ interface{}, reply_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateIds"] = rateIds_
+	params["shopId"] = shopId_
+	params["replyType"] = replyType_
+	params["reply"] = reply_
+	return APIInterface(ugc.config, "eleme.ugc.replyRateByRateIdsAndShopId", params)
+}
+

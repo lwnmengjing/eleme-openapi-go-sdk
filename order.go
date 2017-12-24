@@ -299,3 +299,75 @@ func (order *Order) GetDeliveryFeeForCrowd(orderId_ string) (interface{}, error)
 	return APIInterface(order.config, "eleme.order.getDeliveryFeeForCrowd", params)
 }
 
+// 评价骑手
+// orderId 订单Id
+// evaluationInfo 评价信息
+func (order *Order) EvaluateRider(orderId_ string, evaluationInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["evaluationInfo"] = evaluationInfo_
+	return APIInterface(order.config, "eleme.order.evaluateRider", params)
+}
+
+// 批量获取骑手评价信息
+// orderIds 订单Id的列表
+func (order *Order) MgetEvaluationInfos(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.mgetEvaluationInfos", params)
+}
+
+// 批量获取是否可以评价骑手
+// orderIds 订单Id的列表
+func (order *Order) MgetEvaluationStatus(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.mgetEvaluationStatus", params)
+}
+
+// 批量获取订单加小费信息
+// orderIds 订单Id的列表
+func (order *Order) MgetDeliveryTipInfos(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.mgetDeliveryTipInfos", params)
+}
+
+// 订单加小费
+// orderId 订单Id
+// tip 小费金额
+func (order *Order) AddDeliveryTipByOrderId(orderId_ string, tip_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["tip"] = tip_
+	return APIInterface(order.config, "eleme.order.addDeliveryTipByOrderId", params)
+}
+
+// 主动发起退单
+// orderId 订单Id
+// type 取消原因
+// remark 备注说明
+func (order *Order) ApplyRefund(orderId_ string, type_ interface{}, remark_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["type"] = type_
+	params["remark"] = remark_
+	return APIInterface(order.config, "eleme.order.applyRefund", params)
+}
+
+// 非自配送餐厅标记已出餐
+// orderId 订单Id
+func (order *Order) SetOrderPrepared(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(order.config, "eleme.order.setOrderPrepared", params)
+}
+
+// 查询已出餐列表
+// orderIds 查询已出餐订单Id的列表
+func (order *Order) GetPreparedTimesByOrderIds(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.getPreparedTimesByOrderIds", params)
+}
+
