@@ -49,3 +49,15 @@ func (shop *Shop) SetOnlineRefund(shopId_ int64, enable_ bool) (interface{}, err
 	return APIInterface(shop.config, "eleme.shop.setOnlineRefund", params)
 }
 
+// 设置是否支持预定单及预定天数
+// shopId 店铺id
+// enabled 是否支持预订
+// maxBookingDays 最大预定天数
+func (shop *Shop) SetBookingStatus(shopId_ int64, enabled_ bool, maxBookingDays_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["enabled"] = enabled_
+	params["maxBookingDays"] = maxBookingDays_
+	return APIInterface(shop.config, "eleme.shop.setBookingStatus", params)
+}
+
