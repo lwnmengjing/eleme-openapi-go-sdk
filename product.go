@@ -403,3 +403,11 @@ func (item *Item) SetOrderPackingFee(shopId_ int64, status_ bool, packingFee_ fl
 	return APIInterface(item.config, "eleme.product.item.setOrderPackingFee", params)
 }
 
+// 分页获取店铺下的商品
+// queryPage 分页查询参数
+func (item *Item) QueryItemByPage(queryPage_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["queryPage"] = queryPage_
+	return APIInterface(item.config, "eleme.product.item.queryItemByPage", params)
+}
+
