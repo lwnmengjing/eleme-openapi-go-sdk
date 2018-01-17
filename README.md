@@ -89,6 +89,32 @@
 
 ```
 
+### 非授权接口
+
+```go
+    import openapi "git.coding.net/napos_openapi/eleme-openapi-go-sdk.git"
+
+    // 新建一个配置实例
+    config := openapi.NewConfig(true, app_key, app_secret)
+
+    // 新建一个空 Token
+	t := openapi.Token{}
+	t.Access_token = ""
+	config.SetToken(t)
+
+    // 设置 token
+    config.SetToken(token)
+
+    // 创建 openapi client
+    eleme := elemeOpenApi.NewAPIClient(config)
+
+    // 完成调用
+    res, _ := eleme.Market.SyncMarketMessages(1512057600000, 1516185234000, 0, 10)
+
+    ...
+
+```
+
 
 ## Demo使用方法
 
@@ -110,6 +136,11 @@
 
 
 ## Change Log
+
+### [1.19.0]
+	Release Date : 2018-1-17
+
+- [Feature] 增加服务市场服务
 
 ### [1.18.0]
 	Release Date : 2018-1-5
