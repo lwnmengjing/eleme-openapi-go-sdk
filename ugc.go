@@ -139,30 +139,6 @@ func (ugc *Ugc) GetUnreplyItemRatesByItemIds(itemIds_ interface{}, startTime_ st
 	return APIInterface(ugc.config, "eleme.ugc.getUnreplyItemRatesByItemIds", params)
 }
 
-// 回复指定类型的评论
-// rateId 评论编号
-// replyType 评论类型
-// reply 回复的内容
-func (ugc *Ugc) ReplyRateByRateId(rateId_ string, replyType_ interface{}, reply_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["rateId"] = rateId_
-	params["replyType"] = replyType_
-	params["reply"] = reply_
-	return APIInterface(ugc.config, "eleme.ugc.replyRateByRateId", params)
-}
-
-// 回复指定类型的评论
-// rateIds  评论编号
-// replyType 评论类型
-// reply 回复的内容
-func (ugc *Ugc) ReplyRateByRateIds(rateIds_ interface{}, replyType_ interface{}, reply_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["rateIds"] = rateIds_
-	params["replyType"] = replyType_
-	params["reply"] = reply_
-	return APIInterface(ugc.config, "eleme.ugc.replyRateByRateIds", params)
-}
-
 // 回复订单未回复的评论
 // orderId 订单id
 // reply 回复内容
@@ -237,5 +213,39 @@ func (ugc *Ugc) ReplyRateByRateIdsAndShopId(rateIds_ interface{}, shopId_ string
 	params["replyType"] = replyType_
 	params["reply"] = reply_
 	return APIInterface(ugc.config, "eleme.ugc.replyRateByRateIdsAndShopId", params)
+}
+
+// 根据订单ID赠送代金券给该订单的评价用户
+// orderId  订单编号
+// coupon 需要赠送的代金券信息
+func (ugc *Ugc) SendCouponByOrderId(orderId_ string, coupon_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["coupon"] = coupon_
+	return APIInterface(ugc.config, "eleme.ugc.sendCouponByOrderId", params)
+}
+
+// 根据订单ID获取该订单评价用户的可赠券状态
+// orderId  订单编号
+func (ugc *Ugc) GetOrderCouponStatus(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(ugc.config, "eleme.ugc.getOrderCouponStatus", params)
+}
+
+// 根据订单ID集合获取该订单的已赠券信息集合
+// orderIds 订单编号集合
+func (ugc *Ugc) GetCouponsByOrderIds(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(ugc.config, "eleme.ugc.getCouponsByOrderIds", params)
+}
+
+// 获取店铺的推荐赠送代金券信息
+// shopId 餐厅ID
+func (ugc *Ugc) GetRecommendCouponByShopId(shopId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(ugc.config, "eleme.ugc.getRecommendCouponByShopId", params)
 }
 

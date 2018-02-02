@@ -21,6 +21,18 @@ func (coupon *Coupon) GiveOutCoupons(shopId_ int64, couponActivityId_ int64, mob
 	return APIInterface(coupon.config, "eleme.activity.coupon.giveOutCoupons", params)
 }
 
+// 定向赠红包
+// shopId 店铺Id
+// mobile 需要发放红包的用户手机号
+// couponTemplate 定向赠红包的模板信息
+func (coupon *Coupon) PresentCoupon(shopId_ int64, mobile_ string, couponTemplate_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["mobile"] = mobile_
+	params["couponTemplate"] = couponTemplate_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentCoupon", params)
+}
+
 // 分页查询店铺代金券活动信息
 // shopId 店铺Id
 // couponActivityType 代金券活动类型

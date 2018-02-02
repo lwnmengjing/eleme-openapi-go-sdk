@@ -137,6 +137,12 @@
 
 ## Change Log
 
+### [1.20.0]
+	Release Date : 2018-2-2
+
+- [Feature] 订单评论服务增加若干接口
+- [Feature] 活动服务增加定向送红包接口
+
 ### [1.19.0]
 	Release Date : 2018-1-17
 
