@@ -137,6 +137,12 @@
 
 ## Change Log
 
+### [1.21.0]
+	Release Date : 2018-3-23
+
+- [Feature] 新增流量服务
+- [Feature] 活动服务增加若干红包接口
+
 ### [1.20.0]
 	Release Date : 2018-2-2
 

@@ -1,18 +1,18 @@
 // 活动服务 
 package elemeOpenApi
 
-// 创建代金券活动
-// createInfo 创建代金券活动的结构体
+// 创建红包活动
+// createInfo 创建红包活动的结构体
 func (coupon *Coupon) CreateCouponActivity(createInfo_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["createInfo"] = createInfo_
 	return APIInterface(coupon.config, "eleme.activity.coupon.createCouponActivity", params)
 }
 
-// 向指定用户发放代金券
+// 向指定用户发放红包
 // shopId 店铺Id
-// couponActivityId 代金券活动Id
-// mobiles 需要发放代金券的用户手机号列表
+// couponActivityId 红包活动Id
+// mobiles 需要发放红包的用户手机号列表
 func (coupon *Coupon) GiveOutCoupons(shopId_ int64, couponActivityId_ int64, mobiles_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
@@ -33,9 +33,9 @@ func (coupon *Coupon) PresentCoupon(shopId_ int64, mobile_ string, couponTemplat
 	return APIInterface(coupon.config, "eleme.activity.coupon.presentCoupon", params)
 }
 
-// 分页查询店铺代金券活动信息
+// 分页查询店铺红包活动信息
 // shopId 店铺Id
-// couponActivityType 代金券活动类型
+// couponActivityType 红包活动类型
 // activityStatus 活动状态
 // pageNo 页码（第几页）
 // pageSize 每页数量
@@ -49,10 +49,10 @@ func (coupon *Coupon) QueryCouponActivities(shopId_ int64, couponActivityType_ i
 	return APIInterface(coupon.config, "eleme.activity.coupon.queryCouponActivities", params)
 }
 
-// 分页查询店铺代金券领取详情
+// 分页查询店铺红包领取详情
 // shopId 店铺Id
-// couponActivityId 代金券活动Id
-// couponStatus 代金券状态
+// couponActivityId 红包活动Id
+// couponStatus 红包状态
 // pageNo 页码（第几页）
 // pageSize 每页数量
 func (coupon *Coupon) QueryReceivedCouponDetails(shopId_ int64, couponActivityId_ int64, couponStatus_ interface{}, pageNo_ int, pageSize_ int) (interface{}, error) {
@@ -63,6 +63,50 @@ func (coupon *Coupon) QueryReceivedCouponDetails(shopId_ int64, couponActivityId
 	params["pageNo"] = pageNo_
 	params["pageSize"] = pageSize_
 	return APIInterface(coupon.config, "eleme.activity.coupon.queryReceivedCouponDetails", params)
+}
+
+// 托管单店红包服务
+// shopIds 餐厅id列表,长度不能超过20
+// hostedType 红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+// discounts 扣减额,请设置在[4,15]元,小数点后最多1位
+func (coupon *Coupon) HostShops(shopIds_ interface{}, hostedType_ interface{}, discounts_ float64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopIds"] = shopIds_
+	params["hostedType"] = hostedType_
+	params["discounts"] = discounts_
+	return APIInterface(coupon.config, "eleme.activity.coupon.hostShops", params)
+}
+
+// 查询红包服务托管情况
+// shopIds 餐厅id列表,长度不能超过20
+// hostedType 红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+func (coupon *Coupon) QueryHostInfo(shopIds_ interface{}, hostedType_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopIds"] = shopIds_
+	params["hostedType"] = hostedType_
+	return APIInterface(coupon.config, "eleme.activity.coupon.queryHostInfo", params)
+}
+
+// 取消托管单店红包服务
+// shopIds 餐厅id列表,长度不能超过20
+// hostedType 红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+func (coupon *Coupon) UnhostShops(shopIds_ interface{}, hostedType_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopIds"] = shopIds_
+	params["hostedType"] = hostedType_
+	return APIInterface(coupon.config, "eleme.activity.coupon.unhostShops", params)
+}
+
+// 更改单店红包服务托管方式
+// shopId 店铺Id
+// hostedType 红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+// oActivityServiceDetails 服务内容
+func (coupon *Coupon) RehostShop(shopId_ int64, hostedType_ interface{}, oActivityServiceDetails_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["hostedType"] = hostedType_
+	params["oActivityServiceDetails"] = oActivityServiceDetails_
+	return APIInterface(coupon.config, "eleme.activity.coupon.rehostShop", params)
 }
 
 // 通过店铺Id查询该店铺被邀约的美食活动

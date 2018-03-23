@@ -369,3 +369,11 @@ func (order *Order) GetPreparedTimesByOrderIds(orderIds_ interface{}) (interface
 	return APIInterface(order.config, "eleme.order.getPreparedTimesByOrderIds", params)
 }
 
+// 查询顾客联系方式
+// orderIds 订单ID的列表
+func (order *Order) MgetUserSimpleInfoByOrderIds(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.mgetUserSimpleInfoByOrderIds", params)
+}
+

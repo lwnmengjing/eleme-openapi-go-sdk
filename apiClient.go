@@ -9,9 +9,10 @@ type APIClient struct {
 	File     File
 	Packs    Packs
 	Finance  Finance
-  	Activity Activity
-  	Ugc      Ugc
-  	Market   Market
+	Activity Activity
+	Ugc      Ugc
+	Market   Market
+	Flow     Flow
 	config   Config
 }
 
@@ -84,6 +85,10 @@ type Market struct {
   config *Config
 }
 
+type Flow struct {
+  config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -102,11 +107,12 @@ func (client *APIClient) SetConfig(config Config) {
 	client.File.config = &client.config
 	client.Packs.config = &client.config
 	client.Finance.config = &client.config
-  	client.Activity.config = &client.config
-  	client.Activity.Flash.config = &client.config
-  	client.Activity.Food.config = &client.config
-  	client.Activity.Coupon.config = &client.config
-  	client.Ugc.config = &client.config
-  	client.Market.config = &client.config
+	client.Activity.config = &client.config
+	client.Activity.Flash.config = &client.config
+	client.Activity.Food.config = &client.config
+	client.Activity.Coupon.config = &client.config
+	client.Ugc.config = &client.config
+	client.Market.config = &client.config
+	client.Flow.config = &client.config
 }
 

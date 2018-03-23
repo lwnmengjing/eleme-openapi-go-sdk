@@ -61,3 +61,11 @@ func (shop *Shop) SetBookingStatus(shopId_ int64, enabled_ bool, maxBookingDays_
 	return APIInterface(shop.config, "eleme.shop.setBookingStatus", params)
 }
 
+// 批量通过店铺Id获取Oid
+// shopIds 店铺Id的列表
+func (shop *Shop) GetOidByShopIds(shopIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopIds"] = shopIds_
+	return APIInterface(shop.config, "eleme.shop.getOidByShopIds", params)
+}
+
