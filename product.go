@@ -411,3 +411,11 @@ func (item *Item) QueryItemByPage(queryPage_ interface{}) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.queryItemByPage", params)
 }
 
+// 获取原材料树
+// shopId 店铺ID
+func (item *Item) GetMaterialTree(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(item.config, "eleme.product.item.getMaterialTree", params)
+}
+

@@ -23,6 +23,10 @@ type Token struct {
 	Refresh_token string
 }
 
+type OpenID struct {
+	OpenId string
+}
+
 // 构造一个新的 openapi 配置
 func NewConfig(bSandbox bool, key string, secret string) Config {
 	conf := Config{}

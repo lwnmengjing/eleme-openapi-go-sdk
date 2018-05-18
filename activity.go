@@ -109,6 +109,42 @@ func (coupon *Coupon) RehostShop(shopId_ int64, hostedType_ interface{}, oActivi
 	return APIInterface(coupon.config, "eleme.activity.coupon.rehostShop", params)
 }
 
+// 定向赠红包(单店红包)
+// shopId 店铺id
+// targetList 目标列表
+// targetListType 目标类型
+// targetCouponDetail 定向赠红包模板细节
+func (coupon *Coupon) PresentTargetCoupons(shopId_ int64, targetList_ interface{}, targetListType_ interface{}, targetCouponDetail_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["targetList"] = targetList_
+	params["targetListType"] = targetListType_
+	params["targetCouponDetail"] = targetCouponDetail_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentTargetCoupons", params)
+}
+
+// 定向赠通用红包
+// chainId 连锁店id
+// targetList 目标列表
+// targetListType 目标类型
+// commonTargetCouponDetail 通用定向赠红包模板细节
+func (coupon *Coupon) PresentCommonTargetCoupons(chainId_ int64, targetList_ interface{}, targetListType_ interface{}, commonTargetCouponDetail_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["chainId"] = chainId_
+	params["targetList"] = targetList_
+	params["targetListType"] = targetListType_
+	params["commonTargetCouponDetail"] = commonTargetCouponDetail_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentCommonTargetCoupons", params)
+}
+
+// 分页查询店铺的定向赠红包信息
+// targetCouponQueryRequest 定向赠红包查询入参对象
+func (coupon *Coupon) QueryTargetCouponInfo(targetCouponQueryRequest_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["targetCouponQueryRequest"] = targetCouponQueryRequest_
+	return APIInterface(coupon.config, "eleme.activity.coupon.queryTargetCouponInfo", params)
+}
+
 // 通过店铺Id查询该店铺被邀约的美食活动
 // shopId 店铺Id
 func (food *Food) QueryInvitedFoodActivities(shopId_ int64) (interface{}, error) {

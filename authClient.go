@@ -15,9 +15,9 @@ type OAuthClient struct {
 }
 
 func NewAuthClient(conf Config) OAuthClient {
-    auth := OAuthClient{}
-    auth.SetConfig(conf)
-    return auth
+	auth := OAuthClient{}
+	auth.SetConfig(conf)
+	return auth
 }
 
 // 设置配置
@@ -77,6 +77,26 @@ func (oauth *OAuthClient) GetTokenByAuthCode(code string, redirectURL string) To
 	return token
 }
 
+// 通过 code 获取 openId
+func (oauth *OAuthClient) GetOpenIdByAuthCode(code string, redirectURL string) OpenID {
+	data := url.Values{}
+	data.Set("code", code)
+	data.Set("grant_type", "authorization_code")
+	data.Set("redirect_uri", redirectURL)
+	data.Set("client_id", oauth.config.strKey)
+	byteData, _ := json.Marshal(data)
+	oauth.config.info(string(byteData))
+	host := oauth.config.GetAPIHost()
+	oepnIdURL := getOpenIdURL(host)
+	oauth.config.info(oepnIdURL)
+	auth := oauth.generateAuth()
+	req := genRequest(oepnIdURL, data, auth)
+	body := oauth.request(req)
+	var openId OpenID
+	json.Unmarshal(body, &openId)
+	return openId
+}
+
 // 通过刷新 token 获取 token
 func (oauth *OAuthClient) GetTokenByRefreshToken(refreshToken string, scope string) Token {
 	data := url.Values{}
@@ -117,6 +137,11 @@ func getAPIURL(host string) string {
 	return host + urlSuffix
 }
 
+func getOpenIdURL(host string) string {
+	urlSuffix := "/identity"
+	return host + urlSuffix
+}
+
 // encode string to base64 for authrization
 func base64Encoder(str string) string {
 	return base64.StdEncoding.EncodeToString([]byte(str))
@@ -134,7 +159,13 @@ func (oauth *OAuthClient) request(req *http.Request) []byte {
 	}
 	defer resp.Body.Close()
 	var reader io.ReadCloser
-	reader, err = gzip.NewReader(resp.Body)
+	switch resp.Header.Get("Content-Encoding") {
+	case "gzip":
+		reader, err = gzip.NewReader(resp.Body)
+		defer reader.Close()
+	default:
+		reader = resp.Body
+	}
 	if err != nil {
 		oauth.config.error(err.Error())
 		return nil
