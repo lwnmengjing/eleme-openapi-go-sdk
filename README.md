@@ -136,6 +136,12 @@
 
 
 ## Change Log
+### [1.23.0]
+	Release Date : 2018-6-08
+
+- [Feature] 更新了活动服务
+- [Feature] 更新了订单服务
+
 ### [1.22.0]
 	Release Date : 2018-5-18
 
