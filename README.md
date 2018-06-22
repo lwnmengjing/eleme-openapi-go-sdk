@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.23.1]
+	Release Date : 2018-6-22
+
+- [Feature] 更新了店铺服务
+
 ### [1.23.0]
 	Release Date : 2018-6-08
 
