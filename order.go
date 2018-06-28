@@ -95,7 +95,7 @@ func (order *Order) ReceivedOrderLite(orderId_ string) (interface{}, error) {
 	return APIInterface(order.config, "eleme.order.receivedOrderLite", params)
 }
 
-// (自配送)订单确认送出
+// 订单确认送出(自配送)
 // orderId 订单ID
 // phone 配送者电话
 func (order *Order) StartDeliveryBySelf(orderId_ string, phone_ string) (interface{}, error) {
@@ -105,7 +105,7 @@ func (order *Order) StartDeliveryBySelf(orderId_ string, phone_ string) (interfa
 	return APIInterface(order.config, "eleme.order.startDeliveryBySelf", params)
 }
 
-// (自配送)订单确认送达
+// 订单确认送达(自配送)
 // orderId 订单ID
 // phone 配送者电话
 func (order *Order) CompleteDeliveryBySelf(orderId_ string, phone_ string) (interface{}, error) {
@@ -333,5 +333,13 @@ func (order *Order) MgetUserSimpleInfoByOrderIds(orderIds_ interface{}) (interfa
 	params := make(map[string]interface{})
 	params["orderIds"] = orderIds_
 	return APIInterface(order.config, "eleme.order.mgetUserSimpleInfoByOrderIds", params)
+}
+
+// 获取订单配送轨迹
+// orderId 订单Id
+func (delivery *Delivery) GetDeliveryRoutes(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(delivery.config, "eleme.order.delivery.getDeliveryRoutes", params)
 }
 

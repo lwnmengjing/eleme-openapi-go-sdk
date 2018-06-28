@@ -89,3 +89,59 @@ func (shop *Shop) GetBusyLevelSetting(shopId_ int64) (interface{}, error) {
 	return APIInterface(shop.config, "eleme.shop.getBusyLevelSetting", params)
 }
 
+// 提交开店申请接口
+// openStoreMessage 开店申请表单
+func (setup *Setup) SubmitOpenStoreMessageAudit(openStoreMessage_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["openStoreMessage"] = openStoreMessage_
+	return APIInterface(setup.config, "eleme.shop.setup.submitOpenStoreMessageAudit", params)
+}
+
+// 星巴克提交开店申请接口
+// openStoreMessage 开店申请表单
+func (setup *Setup) SubmitOpenStoreForMermaid(openStoreMessage_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["openStoreMessage"] = openStoreMessage_
+	return APIInterface(setup.config, "eleme.shop.setup.submitOpenStoreForMermaid", params)
+}
+
+// 更新申请信息接口
+// updateStoreMessageBody 开店申请表单
+func (setup *Setup) UpdateOpenStoreMessageAudit(updateStoreMessageBody_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["updateStoreMessageBody"] = updateStoreMessageBody_
+	return APIInterface(setup.config, "eleme.shop.setup.updateOpenStoreMessageAudit", params)
+}
+
+// 查询请求状态接口
+// submitId 请求提交id
+func (setup *Setup) QueryProcessStatusBySubmitId(submitId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["submitId"] = submitId_
+	return APIInterface(setup.config, "eleme.shop.setup.queryProcessStatusBySubmitId", params)
+}
+
+// 图片上传处理接口（5M以内图片）
+// imageBase64 base64字节流
+func (setup *Setup) UploadImage(imageBase64_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["imageBase64"] = imageBase64_
+	return APIInterface(setup.config, "eleme.shop.setup.uploadImage", params)
+}
+
+// 图片上传处理接口（500K以内图片）
+// imageBase64 base64字节流
+func (setup *Setup) UploadMinImage(imageBase64_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["imageBase64"] = imageBase64_
+	return APIInterface(setup.config, "eleme.shop.setup.uploadMinImage", params)
+}
+
+// 远程上传图片接口
+// url 图片url
+func (setup *Setup) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["url"] = url_
+	return APIInterface(setup.config, "eleme.shop.setup.uploadImageWithRemoteUrl", params)
+}
+

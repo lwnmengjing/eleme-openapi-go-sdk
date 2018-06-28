@@ -1,38 +1,6 @@
 // 商品服务 
 package elemeOpenApi
 
-// 上传图片，返回图片的hash值
-// image 文件内容base64编码值
-func (file *File) UploadImage(image_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["image"] = image_
-	return APIInterface(file.config, "eleme.file.uploadImage", params)
-}
-
-// 通过远程URL上传图片，返回图片的hash值
-// url 远程Url地址
-func (file *File) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["url"] = url_
-	return APIInterface(file.config, "eleme.file.uploadImageWithRemoteUrl", params)
-}
-
-// 获取上传文件的访问URL，返回文件的Url地址
-// hash 图片hash值
-func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["hash"] = hash_
-	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
-}
-
-// 获取上传图片的url地址(新版)
-// hash 图片hash值
-func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["hash"] = hash_
-	return APIInterface(file.config, "eleme.file.getImageUrl", params)
-}
-
 // 查询店铺商品分类
 // shopId 店铺Id
 func (category *Category) GetShopCategories(shopId_ int64) (interface{}, error) {
@@ -417,5 +385,71 @@ func (item *Item) GetMaterialTree(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(item.config, "eleme.product.item.getMaterialTree", params)
+}
+
+// 针对主菜itemId设置菜品推荐
+// shopId 店铺ID
+// itemId 商品ID
+// relatedItemIds 关联的商品ID
+func (item *Item) SetRelatedItemIds(shopId_ int64, itemId_ int64, relatedItemIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["itemId"] = itemId_
+	params["relatedItemIds"] = relatedItemIds_
+	return APIInterface(item.config, "eleme.product.item.setRelatedItemIds", params)
+}
+
+// 对主菜itemId设置是否开启菜品推荐
+// shopId 店铺ID
+// itemId 商品ID
+// display 是否展示
+func (item *Item) DisplayRelatedItemIds(shopId_ int64, itemId_ int64, display_ bool) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["itemId"] = itemId_
+	params["display"] = display_
+	return APIInterface(item.config, "eleme.product.item.displayRelatedItemIds", params)
+}
+
+// 针对主菜itemId查询菜品推荐
+// shopId 店铺ID
+// itemId 商品ID
+func (item *Item) GetRelatedItemIds(shopId_ int64, itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["itemId"] = itemId_
+	return APIInterface(item.config, "eleme.product.item.getRelatedItemIds", params)
+}
+
+// 上传图片，返回图片的hash值
+// image 文件内容base64编码值
+func (file *File) UploadImage(image_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["image"] = image_
+	return APIInterface(file.config, "eleme.file.uploadImage", params)
+}
+
+// 通过远程URL上传图片，返回图片的hash值
+// url 远程Url地址
+func (file *File) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["url"] = url_
+	return APIInterface(file.config, "eleme.file.uploadImageWithRemoteUrl", params)
+}
+
+// 获取上传文件的访问URL，返回文件的Url地址
+// hash 图片hash值
+func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["hash"] = hash_
+	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
+}
+
+// 获取上传图片的url地址(新版)
+// hash 图片hash值
+func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["hash"] = hash_
+	return APIInterface(file.config, "eleme.file.getImageUrl", params)
 }
 
