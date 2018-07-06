@@ -30,6 +30,7 @@ type Shop struct {
 type Product struct {
 	Item     Item
 	Category Category
+	Package  Package
 	config   *Config
 }
 
@@ -134,6 +135,10 @@ type Setup struct {
 	config *Config
 }
 
+type Package struct {
+	config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -148,6 +153,7 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Product.config = &client.config
 	client.Product.Item.config = &client.config
 	client.Product.Category.config = &client.config
+	client.Product.Package.config = &client.config
 	client.User.config = &client.config
 	client.Shop.config = &client.config
 	client.Shop.Setup.config = &client.config

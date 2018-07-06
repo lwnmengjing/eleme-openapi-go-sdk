@@ -1,4 +1,4 @@
-// 商品服务 
+// 商品服务
 package elemeOpenApi
 
 // 查询店铺商品分类
@@ -149,6 +149,68 @@ func (category *Category) SetCategoryType(shopId_ int64, categoryId_ int64, cate
 	params["categoryId"] = categoryId_
 	params["categoryType"] = categoryType_
 	return APIInterface(category.config, "eleme.product.category.setCategoryType", params)
+}
+
+// 设置分组分时段置顶
+// shopId 店铺Id
+// categoryId 商品分类Id
+// dayPartingStick 置顶时间设置
+func (category *Category) SetDayPartingStickTime(shopId_ int64, categoryId_ int64, dayPartingStick_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryId"] = categoryId_
+	params["dayPartingStick"] = dayPartingStick_
+	return APIInterface(category.config, "eleme.product.category.setDayPartingStickTime", params)
+}
+
+// 删除分组的分时置顶功能
+// shopId 店铺Id
+// categoryId 商品分类Id
+func (category *Category) RemoveDayPartingStickTime(shopId_ int64, categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.removeDayPartingStickTime", params)
+}
+
+// 添加套餐
+// categoryId 分类Id
+// oPackage 套餐属性
+func (package_ *Package) CreatePackage(categoryId_ int64, oPackage_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["oPackage"] = oPackage_
+	return APIInterface(package_.config, "eleme.product.package.createPackage", params)
+}
+
+// 修改套餐基本信息
+// itemId 新套餐id即OItem中的商品Id
+// categoryId 分类Id即OCategory中的分类Id
+// update 套餐基本信息
+func (package_ *Package) UpdatePackageContent(itemId_ int64, categoryId_ int64, update_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	params["categoryId"] = categoryId_
+	params["update"] = update_
+	return APIInterface(package_.config, "eleme.product.package.updatePackageContent", params)
+}
+
+// 修改套餐和主料的关联关系
+// itemId 新套餐id即OItem中的商品Id
+// packages 套餐关系
+func (package_ *Package) UpdatePackageRelation(itemId_ int64, packages_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	params["packages"] = packages_
+	return APIInterface(package_.config, "eleme.product.package.updatePackageRelation", params)
+}
+
+// 删除套餐
+// itemId 套餐Id
+func (package_ *Package) RemovePackage(itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	return APIInterface(package_.config, "eleme.product.package.removePackage", params)
 }
 
 // 获取一个分类下的所有商品
@@ -387,6 +449,28 @@ func (item *Item) GetMaterialTree(shopId_ int64) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.getMaterialTree", params)
 }
 
+// 主料关联配料
+// shopId 店铺ID
+// mainItemId 主料ID（商品ID）
+// ingredientGroup  商品配料分组
+func (item *Item) SetIngredient(shopId_ int64, mainItemId_ int64, ingredientGroup_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["mainItemId"] = mainItemId_
+	params["ingredientGroup"] = ingredientGroup_
+	return APIInterface(item.config, "eleme.product.item.setIngredient", params)
+}
+
+// 删除配料
+// shopId 店铺ID
+// mainItemId 主料ID（商品ID）
+func (item *Item) RemoveIngredient(shopId_ int64, mainItemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["mainItemId"] = mainItemId_
+	return APIInterface(item.config, "eleme.product.item.removeIngredient", params)
+}
+
 // 针对主菜itemId设置菜品推荐
 // shopId 店铺ID
 // itemId 商品ID
@@ -452,4 +536,3 @@ func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
 	params["hash"] = hash_
 	return APIInterface(file.config, "eleme.file.getImageUrl", params)
 }
-

@@ -136,6 +136,13 @@
 
 
 ## Change Log
+### [1.25.1]
+	Release Date : 2018-7-6
+
+- [Feature] 上传视频接口封装
+- [Feature] 商品服务新增接口
+- [Feature] 内容服务新增接口
+
 ### [1.24.1]
 	Release Date : 2018-6-28
 

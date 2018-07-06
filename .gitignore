@@ -3,6 +3,7 @@
 *.a
 *.so
 .vscode
+.idea
 
 # Folders
 _obj
