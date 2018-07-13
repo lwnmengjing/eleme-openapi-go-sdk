@@ -249,3 +249,55 @@ func (ugc *Ugc) GetRecommendCouponByShopId(shopId_ string) (interface{}, error) 
 	return APIInterface(ugc.config, "eleme.ugc.getRecommendCouponByShopId", params)
 }
 
+// 查询评价信息
+// rateQuery 评价查询参数
+func (ugc *Ugc) GetORateResult(rateQuery_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateQuery"] = rateQuery_
+	return APIInterface(ugc.config, "eleme.ugc.getORateResult", params)
+}
+
+// 统计评价信息数量
+// rateQuery 评价查询参数
+func (ugc *Ugc) CountORateResult(rateQuery_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateQuery"] = rateQuery_
+	return APIInterface(ugc.config, "eleme.ugc.countORateResult", params)
+}
+
+// 通过rateIds和shopId 回复百度外卖评论
+// rateIds  评论编号(订单维度)
+// shopId  饿了么侧餐厅id
+// reply 回复的内容
+func (ugc *Ugc) ReplyBaiduRate(rateIds_ interface{}, shopId_ string, reply_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateIds"] = rateIds_
+	params["shopId"] = shopId_
+	params["reply"] = reply_
+	return APIInterface(ugc.config, "eleme.ugc.replyBaiduRate", params)
+}
+
+// 根据rateId和shopId 赠送代金券给该百度评价对应订单的评价用户
+// rateId  评论编号(订单维度)
+// shopId  餐厅id
+// coupon 需要赠送的代金券信息
+func (ugc *Ugc) SendBaiduCoupon(rateId_ string, shopId_ string, coupon_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateId"] = rateId_
+	params["shopId"] = shopId_
+	params["coupon"] = coupon_
+	return APIInterface(ugc.config, "eleme.ugc.sendBaiduCoupon", params)
+}
+
+// 根据rateId和shopId获取该订单评价用户的可赠券状态
+// rateId  评论编号(订单维度)
+// shopId  餐厅id
+// rateDataType 评价数据类型
+func (ugc *Ugc) GetRateCouponStatus(rateId_ string, shopId_ string, rateDataType_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["rateId"] = rateId_
+	params["shopId"] = shopId_
+	params["rateDataType"] = rateDataType_
+	return APIInterface(ugc.config, "eleme.ugc.getRateCouponStatus", params)
+}
+

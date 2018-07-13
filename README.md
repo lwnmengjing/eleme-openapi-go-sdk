@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.25.2]
+	Release Date : 2018-7-13
+
+- [Feature] 订单评论服务新增接口
+
 ### [1.25.1]
 	Release Date : 2018-7-6
 
