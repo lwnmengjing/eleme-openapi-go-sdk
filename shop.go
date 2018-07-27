@@ -89,6 +89,16 @@ func (shop *Shop) GetBusyLevelSetting(shopId_ int64) (interface{}, error) {
 	return APIInterface(shop.config, "eleme.shop.getBusyLevelSetting", params)
 }
 
+// 设置品牌排序权重
+// shopId 店铺Id
+// weight 权重值(取值范围[0~10])
+func (shop *Shop) SetBrandRankWeight(shopId_ int64, weight_ float64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["weight"] = weight_
+	return APIInterface(shop.config, "eleme.shop.setBrandRankWeight", params)
+}
+
 // 提交开店申请接口
 // openStoreMessage 开店申请表单
 func (setup *Setup) SubmitOpenStoreMessageAudit(openStoreMessage_ interface{}) (interface{}, error) {

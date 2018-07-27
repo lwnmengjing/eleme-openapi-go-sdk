@@ -335,6 +335,26 @@ func (order *Order) MgetUserSimpleInfoByOrderIds(orderIds_ interface{}) (interfa
 	return APIInterface(order.config, "eleme.order.mgetUserSimpleInfoByOrderIds", params)
 }
 
+// 商家部分退款
+// orderId 订单id
+// refundOrderMessage 退款详情
+func (order *Order) RefundPart(orderId_ string, refundOrderMessage_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["refundOrderMessage"] = refundOrderMessage_
+	return APIInterface(order.config, "eleme.order.refundPart", params)
+}
+
+// 设置订单开票地址
+// orderId 订单id
+// invoiceUrl 开票地址
+func (order *Order) SetInvoiceUrl(orderId_ string, invoiceUrl_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["invoiceUrl"] = invoiceUrl_
+	return APIInterface(order.config, "eleme.order.setInvoiceUrl", params)
+}
+
 // 获取订单配送轨迹
 // orderId 订单Id
 func (delivery *Delivery) GetDeliveryRoutes(orderId_ string) (interface{}, error) {
