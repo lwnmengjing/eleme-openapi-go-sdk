@@ -136,6 +136,13 @@
 
 
 ## Change Log
+### [1.27.2]
+	Release Date : 2018-08-03
+
+- [Feature] 商品服务更新接口
+- [Feature] 新增商户会员卡服务
+- [Feature] 新增CPC竞价服务
+
 ### [1.26.2]
 	Release Date : 2018-7-27
 

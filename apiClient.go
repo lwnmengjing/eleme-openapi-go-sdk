@@ -15,6 +15,8 @@ type APIClient struct {
 	Flow       Flow
 	Content    Content
 	Decoration Decoration
+	Card       Card
+	Cpc        Cpc
 	config     Config
 }
 
@@ -139,6 +141,14 @@ type Package struct {
 	config *Config
 }
 
+type Card struct {
+	config *Config
+}
+
+type Cpc struct {
+	config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -174,4 +184,6 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Decoration.Poster.config = &client.config
 	client.Decoration.Story.config = &client.config
 	client.Decoration.Image.config = &client.config
+	client.Card.config = &client.config
+	client.Cpc.config = &client.config
 }

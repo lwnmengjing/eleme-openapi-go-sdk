@@ -87,7 +87,7 @@ func (order *Order) NoMoreDeliveryLite(orderId_ string) (interface{}, error) {
 	return APIInterface(order.config, "eleme.order.noMoreDeliveryLite", params)
 }
 
-// 订单确认送达(推荐)
+// 订单确认送达
 // orderId 订单ID
 func (order *Order) ReceivedOrderLite(orderId_ string) (interface{}, error) {
 	params := make(map[string]interface{})
