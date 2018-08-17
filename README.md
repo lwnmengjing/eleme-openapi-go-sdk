@@ -136,6 +136,12 @@
 
 
 ## Change Log
+### [1.27.3]
+	Release Date : 2018-08-17
+
+- [Feature] 活动服务新增接口
+- [Feature] 商户会员卡服务修复bug
+
 ### [1.27.2]
 	Release Date : 2018-08-03
 

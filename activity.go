@@ -281,3 +281,39 @@ func (coupon *Coupon) QueryTargetCouponInfo(targetCouponQueryRequest_ interface{
 	return APIInterface(coupon.config, "eleme.activity.coupon.queryTargetCouponInfo", params)
 }
 
+// 定向赠通用商品券
+// chainId 连锁店id
+// targetList 目标列表
+// targetListType 目标类型
+// commonTargetSkuCouponDetail 通用定向赠连锁商品券模板细节
+func (coupon *Coupon) PresentCommonTargetSkuCoupons(chainId_ int64, targetList_ interface{}, targetListType_ interface{}, commonTargetSkuCouponDetail_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["chainId"] = chainId_
+	params["targetList"] = targetList_
+	params["targetListType"] = targetListType_
+	params["commonTargetSkuCouponDetail"] = commonTargetSkuCouponDetail_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentCommonTargetSkuCoupons", params)
+}
+
+// 定向赠指定商品券
+// targetList 目标列表
+// targetListType 目标类型
+// skuCouponDetail 商品券模板细节
+func (coupon *Coupon) PresentSkuCoupons(targetList_ interface{}, targetListType_ interface{}, skuCouponDetail_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["targetList"] = targetList_
+	params["targetListType"] = targetListType_
+	params["skuCouponDetail"] = skuCouponDetail_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentSkuCoupons", params)
+}
+
+// 券状态变更
+// criteria 券状态修改对象
+// type 操作类型
+func (coupon *Coupon) UpdateCouponStatus(criteria_ interface{}, type_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["criteria"] = criteria_
+	params["type"] = type_
+	return APIInterface(coupon.config, "eleme.activity.coupon.updateCouponStatus", params)
+}
+

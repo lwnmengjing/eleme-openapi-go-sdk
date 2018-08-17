@@ -43,7 +43,7 @@ func (card *Card) MgetShopIdsByTemplateIds(templateId_ interface{}) (interface{}
 	return APIInterface(card.config, "eleme.card.mgetShopIdsByTemplateIds", params)
 }
 
-// 将会员模板应用于店铺
+// 应用模板
 // templateId 模板id
 // shopIds 店铺列表
 func (card *Card) ApplyTemplate(templateId_ string, shopIds_ interface{}) (interface{}, error) {
