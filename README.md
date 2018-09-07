@@ -136,6 +136,13 @@
 
 
 ## Change Log
+### [1.28.3]
+	Release Date : 2018-09-07
+
+- [Feature] 活动服务新增接口
+- [Feature] 店铺服务新增接口
+- [Feature] 商品服务新增接口
+
 ### [1.27.3]
 	Release Date : 2018-08-17
 

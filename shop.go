@@ -99,6 +99,14 @@ func (shop *Shop) SetBrandRankWeight(shopId_ int64, weight_ float64) (interface{
 	return APIInterface(shop.config, "eleme.shop.setBrandRankWeight", params)
 }
 
+// 获取店铺可补贴配送费的标品及补贴上限
+// shopId 店铺 id 
+func (shop *Shop) GetProductSubsidyLimit(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(shop.config, "eleme.shop.getProductSubsidyLimit", params)
+}
+
 // 提交开店申请接口
 // openStoreMessage 开店申请表单
 func (setup *Setup) SubmitOpenStoreMessageAudit(openStoreMessage_ interface{}) (interface{}, error) {

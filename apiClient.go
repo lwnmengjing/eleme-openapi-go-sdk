@@ -69,6 +69,10 @@ type Flash struct {
 	config *Config
 }
 
+type Shippingfee struct {
+	config *Config
+}
+
 type Food struct {
 	config *Config
 }
@@ -78,10 +82,11 @@ type Coupon struct {
 }
 
 type Activity struct {
-	Food   Food
-	Flash  Flash
-	Coupon Coupon
-	config *Config
+	Food        Food
+	Flash       Flash
+	Shippingfee Shippingfee
+	Coupon      Coupon
+	config      *Config
 }
 
 type Ugc struct {
@@ -172,6 +177,7 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Finance.config = &client.config
 	client.Activity.config = &client.config
 	client.Activity.Flash.config = &client.config
+	client.Activity.Shippingfee.config = &client.config
 	client.Activity.Food.config = &client.config
 	client.Activity.Coupon.config = &client.config
 	client.Ugc.config = &client.config

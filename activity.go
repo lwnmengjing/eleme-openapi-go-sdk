@@ -69,6 +69,28 @@ func (flash *Flash) InvalidShopActivity(activityId_ int64, shopId_ int64) (inter
 	return APIInterface(flash.config, "eleme.activity.flash.invalidShopActivity", params)
 }
 
+// 创建减配送费活动
+// createInfo 创建减配送费活动的结构体
+// shopId 店铺Id
+func (shippingfee *Shippingfee) CreateShippingFeeActivity(createInfo_ interface{}, shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["createInfo"] = createInfo_
+	params["shopId"] = shopId_
+	return APIInterface(shippingfee.config, "eleme.activity.shippingFee.createShippingFeeActivity", params)
+}
+
+// 作废减配送费活动
+// activityId 活动Id
+// shopId 店铺Id
+// comment 作废原因
+func (shippingfee *Shippingfee) InvalidShippingFeeActivity(activityId_ int64, shopId_ int64, comment_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["shopId"] = shopId_
+	params["comment"] = comment_
+	return APIInterface(shippingfee.config, "eleme.activity.shippingFee.invalidShippingFeeActivity", params)
+}
+
 // 通过店铺Id查询该店铺被邀约的美食活动
 // shopId 店铺Id
 func (food *Food) QueryInvitedFoodActivities(shopId_ int64) (interface{}, error) {

@@ -1,4 +1,4 @@
-// 商品服务
+// 商品服务 
 package elemeOpenApi
 
 // 上传图片，返回图片的hash值
@@ -269,28 +269,6 @@ func (item *Item) GetMaterialTree(shopId_ int64) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.getMaterialTree", params)
 }
 
-// 主料关联配料
-// shopId 店铺ID
-// mainItemId 主料ID（商品ID）
-// ingredientGroup  商品配料分组
-func (item *Item) SetIngredient(shopId_ int64, mainItemId_ int64, ingredientGroup_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["mainItemId"] = mainItemId_
-	params["ingredientGroup"] = ingredientGroup_
-	return APIInterface(item.config, "eleme.product.item.setIngredient", params)
-}
-
-// 删除配料
-// shopId 店铺ID
-// mainItemId 主料ID（商品ID）
-func (item *Item) RemoveIngredient(shopId_ int64, mainItemId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["mainItemId"] = mainItemId_
-	return APIInterface(item.config, "eleme.product.item.removeIngredient", params)
-}
-
 // 针对主菜itemId设置菜品推荐
 // shopId 店铺ID
 // itemId 商品ID
@@ -325,36 +303,22 @@ func (item *Item) GetRelatedItemIds(shopId_ int64, itemId_ int64) (interface{}, 
 	return APIInterface(item.config, "eleme.product.item.getRelatedItemIds", params)
 }
 
-// 添加多规格商品
-// categoryId 商品分类Id
-// properties 商品属性
-func (item *Item) CreateMultiSpecItem(categoryId_ int64, properties_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	params["properties"] = properties_
-	return APIInterface(item.config, "eleme.product.item.createMultiSpecItem", params)
-}
-
-// 批量添加多规格商品
-// categoryId 商品分类Id
-// items 商品属性的列表
-func (item *Item) BatchCreateMultiSpecItem(categoryId_ int64, items_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	params["items"] = items_
-	return APIInterface(item.config, "eleme.product.item.batchCreateMultiSpecItem", params)
-}
-
-// 更新多规格商品
+// 设置配料组数据
 // itemId 商品Id
-// categoryId 商品分类Id
-// properties 商品属性
-func (item *Item) UpdateMultiSpecItem(itemId_ int64, categoryId_ int64, properties_ interface{}) (interface{}, error) {
+// groupRelations 配料组信息
+func (item *Item) SetIngredientGroup(itemId_ int64, groupRelations_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
-	params["categoryId"] = categoryId_
-	params["properties"] = properties_
-	return APIInterface(item.config, "eleme.product.item.updateMultiSpecItem", params)
+	params["groupRelations"] = groupRelations_
+	return APIInterface(item.config, "eleme.product.item.setIngredientGroup", params)
+}
+
+// 删除配料组数据
+// itemId 商品Id
+func (item *Item) RemoveIngredientGroup(itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	return APIInterface(item.config, "eleme.product.item.removeIngredientGroup", params)
 }
 
 // 查询店铺商品分类
@@ -568,3 +532,58 @@ func (package_ *Package) RemovePackage(itemId_ int64) (interface{}, error) {
 	params["itemId"] = itemId_
 	return APIInterface(package_.config, "eleme.product.package.removePackage", params)
 }
+
+// 主料关联配料
+// shopId 店铺ID
+// mainItemId 主料ID（商品ID）
+// ingredientGroup  商品配料分组
+func (package_ *Package) SetIngredient(shopId_ int64, mainItemId_ int64, ingredientGroup_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["mainItemId"] = mainItemId_
+	params["ingredientGroup"] = ingredientGroup_
+	return APIInterface(package_.config, "eleme.product.package.setIngredient", params)
+}
+
+// 删除配料
+// shopId 店铺ID
+// mainItemId 主料ID（商品ID）
+func (package_ *Package) RemoveIngredient(shopId_ int64, mainItemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["mainItemId"] = mainItemId_
+	return APIInterface(package_.config, "eleme.product.package.removeIngredient", params)
+}
+
+// 添加多规格商品
+// categoryId 商品分类Id
+// properties 商品属性
+func (package_ *Package) CreateMultiSpecItem(categoryId_ int64, properties_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["properties"] = properties_
+	return APIInterface(package_.config, "eleme.product.package.createMultiSpecItem", params)
+}
+
+// 批量添加多规格商品
+// categoryId 商品分类Id
+// items 商品属性的列表
+func (package_ *Package) BatchCreateMultiSpecItem(categoryId_ int64, items_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["items"] = items_
+	return APIInterface(package_.config, "eleme.product.package.batchCreateMultiSpecItem", params)
+}
+
+// 更新多规格商品
+// itemId 商品Id
+// categoryId 商品分类Id
+// properties 商品属性
+func (package_ *Package) UpdateMultiSpecItem(itemId_ int64, categoryId_ int64, properties_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	params["categoryId"] = categoryId_
+	params["properties"] = properties_
+	return APIInterface(package_.config, "eleme.product.package.updateMultiSpecItem", params)
+}
+
