@@ -355,6 +355,28 @@ func (order *Order) SetInvoiceUrl(orderId_ string, invoiceUrl_ string) (interfac
 	return APIInterface(order.config, "eleme.order.setInvoiceUrl", params)
 }
 
+// 自配送商家同步运单的状态信息
+// shopId 店铺id
+// stateInfo 运单状态信息
+func (order *Order) SelfDeliveryStateSync(shopId_ int64, stateInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["stateInfo"] = stateInfo_
+	return APIInterface(order.config, "eleme.order.selfDeliveryStateSync", params)
+}
+
+// 自配送商家同步运单的位置信息
+// shopId 店铺id
+// orderId 订单id
+// locationInfo 位置信息,仅接受火星坐标系
+func (order *Order) SelfDeliveryLocationSync(shopId_ int64, orderId_ string, locationInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["orderId"] = orderId_
+	params["locationInfo"] = locationInfo_
+	return APIInterface(order.config, "eleme.order.selfDeliveryLocationSync", params)
+}
+
 // 获取订单配送轨迹
 // orderId 订单Id
 func (delivery *Delivery) GetDeliveryRoutes(orderId_ string) (interface{}, error) {
