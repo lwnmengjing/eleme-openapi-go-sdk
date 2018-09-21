@@ -17,6 +17,7 @@ type APIClient struct {
 	Decoration Decoration
 	Card       Card
 	Cpc        Cpc
+	Sms        Sms
 	config     Config
 }
 
@@ -125,13 +126,23 @@ type Image struct {
 	config *Config
 }
 
+type Accuratecategory struct {
+	config *Config
+}
+
+type Burstwindow struct {
+	config *Config
+}
+
 type Decoration struct {
-	Windows Windows
-	Sign    Sign
-	Poster  Poster
-	Story   Story
-	Image   Image
-	config  *Config
+	Windows          Windows
+	Sign             Sign
+	Poster           Poster
+	Story            Story
+	Image            Image
+	Accuratecategory Accuratecategory
+	Burstwindow      Burstwindow
+	config           *Config
 }
 
 type Delivery struct {
@@ -151,6 +162,10 @@ type Card struct {
 }
 
 type Cpc struct {
+	config *Config
+}
+
+type Sms struct {
 	config *Config
 }
 
@@ -190,6 +205,9 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Decoration.Poster.config = &client.config
 	client.Decoration.Story.config = &client.config
 	client.Decoration.Image.config = &client.config
+	client.Decoration.Accuratecategory.config = &client.config
+	client.Decoration.Burstwindow.config = &client.config
 	client.Card.config = &client.config
 	client.Cpc.config = &client.config
+	client.Sms.config = &client.config
 }

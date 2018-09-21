@@ -136,6 +136,13 @@
 
 
 ## Change Log
+### [1.29.4]
+	Release Date : 2018-09-21
+
+- [Feature] 商户会员卡服务更新接口
+- [Feature] 店铺装修服务服务更新接口
+- [Feature] 短信服务新增接口
+
 ### [1.28.4]
 	Release Date : 2018-09-14
 

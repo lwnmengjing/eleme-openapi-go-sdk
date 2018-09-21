@@ -75,8 +75,8 @@ func (card *Card) UpdateUserInfo(cardUserInfo_ interface{}, cardAccountInfo_ int
 	return APIInterface(card.config, "eleme.card.updateUserInfo", params)
 }
 
-// 根据userToken获取用户信息
-// userToken userToken有效期10分钟。饿了么app上跳转到外部H5页面www.abc.com/aaa?userToken=aaabbbccc,aaabbbccc为userToken,用其作为该接口的入参获取到用户信息
+// 根据userToken获取用户信息(该接口不再使用)
+// userToken userToken有效期10分钟.饿了么app上跳转到外部H5页面https://www.abc.com?accessToken=c8cea843-1fb5-473f-bb10-a9d2aa239c39,其中accessToken为userToken,用其作为该接口的入参获取到用户信息
 func (card *Card) GetUserByToken(userToken_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["userToken"] = userToken_
