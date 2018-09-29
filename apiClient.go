@@ -18,6 +18,7 @@ type APIClient struct {
 	Card       Card
 	Cpc        Cpc
 	Sms        Sms
+	Data       Data
 	config     Config
 }
 
@@ -169,6 +170,19 @@ type Sms struct {
 	config *Config
 }
 
+type Data struct {
+	Single Single
+	Chain  Chain
+	config *Config
+}
+
+type Single struct {
+	config *Config
+}
+type Chain struct {
+	config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -210,4 +224,7 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Card.config = &client.config
 	client.Cpc.config = &client.config
 	client.Sms.config = &client.config
+	client.Data.config = &client.config
+	client.Data.Single.config = &client.config
+	client.Data.Chain.config = &client.config
 }

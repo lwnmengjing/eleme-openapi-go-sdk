@@ -136,6 +136,12 @@
 
 
 ## Change Log
+### [1.30.4]
+	Release Date : 2018-09-29
+
+- [Feature] 新增商户数据服务
+- [Feature] 店铺服务更新接口
+
 ### [1.29.4]
 	Release Date : 2018-09-21
 

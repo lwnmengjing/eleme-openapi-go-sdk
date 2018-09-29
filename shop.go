@@ -70,7 +70,7 @@ func (shop *Shop) GetOidByShopIds(shopIds_ interface{}) (interface{}, error) {
 }
 
 // 更新店铺营业时间预设置
-// shopId 店铺 id 
+// shopId 店铺id
 // weekSetting 一周营业时间预设置, 参考 OShopBusyLevelSetting weekSetting 字段定义 
 // dateSetting 特定日期营业时间预设置, 参考 OShopBusyLevelSetting dateSetting 字段定义 
 func (shop *Shop) UpdateBusyLevelSetting(shopId_ int64, weekSetting_ interface{}, dateSetting_ interface{}) (interface{}, error) {
@@ -82,7 +82,7 @@ func (shop *Shop) UpdateBusyLevelSetting(shopId_ int64, weekSetting_ interface{}
 }
 
 // 获取店铺营业时间预设置
-// shopId 店铺 id 
+// shopId 店铺id
 func (shop *Shop) GetBusyLevelSetting(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
