@@ -1,6 +1,14 @@
 // 订单服务 
 package elemeOpenApi
 
+// 获取订单配送轨迹
+// orderId 订单Id
+func (delivery *Delivery) GetDeliveryRoutes(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(delivery.config, "eleme.order.delivery.getDeliveryRoutes", params)
+}
+
 // 获取订单
 // orderId 订单Id
 func (order *Order) GetOrder(orderId_ string) (interface{}, error) {
@@ -88,7 +96,7 @@ func (order *Order) NoMoreDeliveryLite(orderId_ string) (interface{}, error) {
 }
 
 // 订单确认送达
-// orderId 订单ID
+// orderId 订单Id
 func (order *Order) ReceivedOrderLite(orderId_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["orderId"] = orderId_
@@ -96,7 +104,7 @@ func (order *Order) ReceivedOrderLite(orderId_ string) (interface{}, error) {
 }
 
 // 订单确认送出(自配送)
-// orderId 订单ID
+// orderId 订单Id
 // phone 配送者电话
 func (order *Order) StartDeliveryBySelf(orderId_ string, phone_ string) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -106,7 +114,7 @@ func (order *Order) StartDeliveryBySelf(orderId_ string, phone_ string) (interfa
 }
 
 // 订单确认送达(自配送)
-// orderId 订单ID
+// orderId 订单Id
 // phone 配送者电话
 func (order *Order) CompleteDeliveryBySelf(orderId_ string, phone_ string) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -178,7 +186,7 @@ func (order *Order) CallDelivery(orderId_ string, fee_ int) (interface{}, error)
 }
 
 // 获取店铺未回复的催单
-// shopId 店铺id
+// shopId 店铺Id
 func (order *Order) GetUnreplyReminders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
@@ -186,7 +194,7 @@ func (order *Order) GetUnreplyReminders(shopId_ int64) (interface{}, error) {
 }
 
 // 查询店铺未处理订单
-// shopId 店铺id
+// shopId 店铺Id
 func (order *Order) GetUnprocessOrders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
@@ -194,7 +202,7 @@ func (order *Order) GetUnprocessOrders(shopId_ int64) (interface{}, error) {
 }
 
 // 查询店铺未处理的取消单
-// shopId 店铺id
+// shopId 店铺Id
 func (order *Order) GetCancelOrders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
@@ -202,7 +210,7 @@ func (order *Order) GetCancelOrders(shopId_ int64) (interface{}, error) {
 }
 
 // 查询店铺未处理的退单
-// shopId 店铺id
+// shopId 店铺Id
 func (order *Order) GetRefundOrders(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
@@ -210,7 +218,7 @@ func (order *Order) GetRefundOrders(shopId_ int64) (interface{}, error) {
 }
 
 // 查询全部订单
-// shopId 店铺id
+// shopId 店铺Id
 // pageNo 页码。取值范围:大于零的整数最大限制为100
 // pageSize 每页获取条数。最小值1，最大值50。
 // date 日期,默认当天,格式:yyyy-MM-dd
@@ -328,7 +336,7 @@ func (order *Order) GetPreparedTimesByOrderIds(orderIds_ interface{}) (interface
 }
 
 // 查询顾客联系方式
-// orderIds 订单ID的列表
+// orderIds 订单Id的列表
 func (order *Order) MgetUserSimpleInfoByOrderIds(orderIds_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["orderIds"] = orderIds_
@@ -336,7 +344,7 @@ func (order *Order) MgetUserSimpleInfoByOrderIds(orderIds_ interface{}) (interfa
 }
 
 // 商家部分退款
-// orderId 订单id
+// orderId 订单Id
 // refundOrderMessage 退款详情
 func (order *Order) RefundPart(orderId_ string, refundOrderMessage_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -346,7 +354,7 @@ func (order *Order) RefundPart(orderId_ string, refundOrderMessage_ interface{})
 }
 
 // 设置订单开票地址
-// orderId 订单id
+// orderId 订单Id
 // invoiceUrl 开票地址
 func (order *Order) SetInvoiceUrl(orderId_ string, invoiceUrl_ string) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -356,7 +364,7 @@ func (order *Order) SetInvoiceUrl(orderId_ string, invoiceUrl_ string) (interfac
 }
 
 // 自配送商家同步运单的状态信息
-// shopId 店铺id
+// shopId 店铺Id
 // stateInfo 运单状态信息
 func (order *Order) SelfDeliveryStateSync(shopId_ int64, stateInfo_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -366,8 +374,8 @@ func (order *Order) SelfDeliveryStateSync(shopId_ int64, stateInfo_ interface{})
 }
 
 // 自配送商家同步运单的位置信息
-// shopId 店铺id
-// orderId 订单id
+// shopId 店铺Id
+// orderId 订单Id
 // locationInfo 位置信息,仅接受火星坐标系
 func (order *Order) SelfDeliveryLocationSync(shopId_ int64, orderId_ string, locationInfo_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -377,11 +385,33 @@ func (order *Order) SelfDeliveryLocationSync(shopId_ int64, orderId_ string, loc
 	return APIInterface(order.config, "eleme.order.selfDeliveryLocationSync", params)
 }
 
-// 获取订单配送轨迹
+// 订单预计出餐时间
 // orderId 订单Id
-func (delivery *Delivery) GetDeliveryRoutes(orderId_ string) (interface{}, error) {
+// predictTime 预计订单出餐时间
+func (order *Order) OrderPredictFinishTime(orderId_ string, predictTime_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["orderId"] = orderId_
-	return APIInterface(delivery.config, "eleme.order.delivery.getDeliveryRoutes", params)
+	params["predictTime"] = predictTime_
+	return APIInterface(order.config, "eleme.order.orderPredictFinishTime", params)
+}
+
+// 菜品预计出餐时间
+// shopId 店铺Id
+// commodityInfo 菜品信息
+func (order *Order) CommodityPredictFinishTime(shopId_ int64, commodityInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["commodityInfo"] = commodityInfo_
+	return APIInterface(order.config, "eleme.order.commodityPredictFinishTime", params)
+}
+
+// 菜品实际出餐时间
+// shopId 店铺Id
+// commodityInfo 菜品信息
+func (order *Order) CommodityActualFinishTime(shopId_ int64, commodityInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["commodityInfo"] = commodityInfo_
+	return APIInterface(order.config, "eleme.order.commodityActualFinishTime", params)
 }
 

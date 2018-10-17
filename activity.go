@@ -339,3 +339,29 @@ func (coupon *Coupon) UpdateCouponStatus(criteria_ interface{}, type_ int) (inte
 	return APIInterface(coupon.config, "eleme.activity.coupon.updateCouponStatus", params)
 }
 
+// 创建并绑定连锁店特价活动
+// activity 活动创建信息
+// chainId 连锁店Id
+// shopApplyInfo  绑定的商品信息
+func (skuchain *Skuchain) CreateAndParticipateChainPriceActivity(activity_ interface{}, chainId_ int64, shopApplyInfo_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activity"] = activity_
+	params["chainId"] = chainId_
+	params["shopApplyInfo"] = shopApplyInfo_
+	return APIInterface(skuchain.config, "eleme.activity.skuchain.createAndParticipateChainPriceActivity", params)
+}
+
+// 根据活动Id和店铺Id和商品规格Id，作废参与关系
+// activityId 活动Id
+// shopId 店铺Id
+// specId 商品规格Id
+// comment 作废原因
+func (skuchain *Skuchain) InValidSkuActivityById(activityId_ int64, shopId_ int64, specId_ int64, comment_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityId"] = activityId_
+	params["shopId"] = shopId_
+	params["specId"] = specId_
+	params["comment"] = comment_
+	return APIInterface(skuchain.config, "eleme.activity.skuchain.inValidSkuActivityById", params)
+}
+

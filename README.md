@@ -136,6 +136,13 @@
 
 
 ## Change Log
+### [1.30.5]
+	Release Date : 2018-10-17
+
+- [Feature] 活动服务新增接口
+- [Feature] 订单评论服务更新接口
+- [Feature] 订单服务新增更新接口
+
 ### [1.30.4]
 	Release Date : 2018-09-29
 

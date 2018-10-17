@@ -265,7 +265,7 @@ func (ugc *Ugc) CountORateResult(rateQuery_ interface{}) (interface{}, error) {
 	return APIInterface(ugc.config, "eleme.ugc.countORateResult", params)
 }
 
-// 通过rateIds和shopId 回复百度外卖评论
+// 通过rateIds和shopId 回复饿了么星选评论
 // rateIds  评论编号(订单维度)
 // shopId  饿了么侧餐厅id
 // reply 回复的内容
@@ -277,7 +277,7 @@ func (ugc *Ugc) ReplyBaiduRate(rateIds_ interface{}, shopId_ string, reply_ stri
 	return APIInterface(ugc.config, "eleme.ugc.replyBaiduRate", params)
 }
 
-// 根据rateId和shopId 赠送代金券给该百度评价对应订单的评价用户
+// 根据rateId和shopId 赠送代金券给该饿了么星选评价对应订单的评价用户
 // rateId  评论编号(订单维度)
 // shopId  餐厅id
 // coupon 需要赠送的代金券信息
