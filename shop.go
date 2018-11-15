@@ -100,11 +100,31 @@ func (shop *Shop) SetBrandRankWeight(shopId_ int64, weight_ float64) (interface{
 }
 
 // 获取店铺可补贴配送费的标品及补贴上限
-// shopId 店铺 id 
+// shopId 店铺Id
 func (shop *Shop) GetProductSubsidyLimit(shopId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["shopId"] = shopId_
 	return APIInterface(shop.config, "eleme.shop.getProductSubsidyLimit", params)
+}
+
+// 设置店铺假期歇业
+// shopId 店铺Id
+// vocationDates  店铺休假日期
+// enabled  店铺休假是否有效
+func (shop *Shop) SetShopVocations(shopId_ int64, vocationDates_ interface{}, enabled_ bool) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["vocationDates"] = vocationDates_
+	params["enabled"] = enabled_
+	return APIInterface(shop.config, "eleme.shop.setShopVocations", params)
+}
+
+// 获取店铺有效的假期歇业日期
+// shopId 店铺Id
+func (shop *Shop) GetShopVocation(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(shop.config, "eleme.shop.getShopVocation", params)
 }
 
 // 提交开店申请接口

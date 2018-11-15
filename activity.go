@@ -317,6 +317,20 @@ func (coupon *Coupon) PresentCommonTargetSkuCoupons(chainId_ int64, targetList_ 
 	return APIInterface(coupon.config, "eleme.activity.coupon.presentCommonTargetSkuCoupons", params)
 }
 
+// 定向赠连锁通用商品券
+// chainId 连锁店id
+// targetList 目标列表
+// targetListType 目标类型
+// chainSkuCouponDetail 通用定向赠连锁商品券模板细节
+func (coupon *Coupon) PresentChainSkuCoupons(chainId_ int64, targetList_ interface{}, targetListType_ interface{}, chainSkuCouponDetail_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["chainId"] = chainId_
+	params["targetList"] = targetList_
+	params["targetListType"] = targetListType_
+	params["chainSkuCouponDetail"] = chainSkuCouponDetail_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentChainSkuCoupons", params)
+}
+
 // 定向赠指定商品券
 // targetList 目标列表
 // targetListType 目标类型
