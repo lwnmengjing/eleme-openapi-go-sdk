@@ -176,7 +176,12 @@ func pseudoUUID4() string {
 	b[6] = (b[6] | 0x40) & 0x4F
 	b[8] = (b[8] | 0x80) & 0xBF
 	uuid := fmt.Sprintf("%x-%x-%x-%x-%x", b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
-	return strings.ToLower(uuid)
+	return strings.ToUpper(strings.Replace(uuid, "-", "", -1)) + "|" + strconv.FormatInt(getMilliTimestamp(), 10)
+}
+
+func getMilliTimestamp() int64 {
+	timestamp := time.Now().UnixNano()
+	return timestamp / int64(time.Millisecond)
 }
 
 func getTimestamp() int64 {

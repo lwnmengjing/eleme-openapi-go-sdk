@@ -107,6 +107,16 @@ func (shop *Shop) GetProductSubsidyLimit(shopId_ int64) (interface{}, error) {
 	return APIInterface(shop.config, "eleme.shop.getProductSubsidyLimit", params)
 }
 
+// 设置店铺T模型
+// shopId 店铺Id
+// deliveryTime 配送总时间(单位:分钟)
+func (shop *Shop) SetShopTModel(shopId_ int64, deliveryTime_ int) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["deliveryTime"] = deliveryTime_
+	return APIInterface(shop.config, "eleme.shop.setShopTModel", params)
+}
+
 // 设置店铺假期歇业
 // shopId 店铺Id
 // vocationDates  店铺休假日期
