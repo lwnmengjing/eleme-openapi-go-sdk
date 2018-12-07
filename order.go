@@ -415,3 +415,11 @@ func (order *Order) CommodityActualFinishTime(shopId_ int64, commodityInfo_ inte
 	return APIInterface(order.config, "eleme.order.commodityActualFinishTime", params)
 }
 
+// 匿名订单查询可用虚拟小号
+// orderId 订单Id
+func (order *Order) QueryCallAvailable(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(order.config, "eleme.order.queryCallAvailable", params)
+}
+

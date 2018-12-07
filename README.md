@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.31.2]
+	Release Date : 2018-12-7
+
+- [Feature] 订单服务更新接口
+
 ### [1.31.1]
 	Release Date : 2018-11-30
 
