@@ -113,52 +113,6 @@ func (accuratecategory *Accuratecategory) QueryAccurateCategoryList(category_ in
 	return APIInterface(accuratecategory.config, "eleme.decoration.accurateCategory.queryAccurateCategoryList", params)
 }
 
-// 创建多橱窗
-// window 新增的橱窗信息和其关联门店ID和关联商品
-func (windows *Windows) CreateWindow(window_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["window"] = window_
-	return APIInterface(windows.config, "eleme.decoration.windows.createWindow", params)
-}
-
-// 修改橱窗
-// window 修改的橱窗信息和其关联门店ID和门店商品
-func (windows *Windows) UpdateWindow(window_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["window"] = window_
-	return APIInterface(windows.config, "eleme.decoration.windows.updateWindow", params)
-}
-
-// 删除橱窗
-// window 删除橱窗信息
-func (windows *Windows) DeleteWindow(window_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["window"] = window_
-	return APIInterface(windows.config, "eleme.decoration.windows.deleteWindow", params)
-}
-
-// 对多个橱窗进行排序
-// window 橱窗排序信息
-func (windows *Windows) OrderWindow(window_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["window"] = window_
-	return APIInterface(windows.config, "eleme.decoration.windows.orderWindow", params)
-}
-
-// 根据橱窗ID获取橱窗详情
-// burstWindowId 橱窗ID
-func (windows *Windows) GetWindowById(burstWindowId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["burstWindowId"] = burstWindowId_
-	return APIInterface(windows.config, "eleme.decoration.windows.getWindowById", params)
-}
-
-// 获取可见的橱窗信息集合
-func (windows *Windows) GetWindows() (interface{}, error) {
-	params := make(map[string]interface{})
-	return APIInterface(windows.config, "eleme.decoration.windows.getWindows", params)
-}
-
 // 创建海报
 // poster 海报信息和其关联门店ID和门店商品
 func (poster *Poster) CreatePoster(poster_ interface{}) (interface{}, error) {

@@ -3,7 +3,7 @@ package elemeOpenApi
 
 // 获取指定订单的评论
 // orderId 订单id
-func (ugc *Ugc) GetOrderRateByOrderId(orderId_ string) (interface{}, error) {
+func (ugc *Ugc) GetOrderRateByOrderId(orderId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["orderId"] = orderId_
 	return APIInterface(ugc.config, "eleme.ugc.getOrderRateByOrderId", params)
@@ -187,7 +187,7 @@ func (ugc *Ugc) ReplyRatesByItemIds(itemIds_ interface{}, reply_ string, startTi
 	return APIInterface(ugc.config, "eleme.ugc.replyRatesByItemIds", params)
 }
 
-// 通过rateId和shopId 回复指定类型的评论
+// 通过rateId和shopId 回复指定类型的评论(推荐)
 // rateId 评论编号
 // shopId  餐厅id
 // replyType 评论类型
@@ -201,7 +201,7 @@ func (ugc *Ugc) ReplyRateByRateIdAndShopId(rateId_ string, shopId_ string, reply
 	return APIInterface(ugc.config, "eleme.ugc.replyRateByRateIdAndShopId", params)
 }
 
-// 通过rateIds和shopId 批量回复指定类型的评论
+// 通过rateIds和shopId 批量回复指定类型的评论(推荐)
 // rateIds  评论编号
 // shopId  餐厅id
 // replyType 评论类型
@@ -249,7 +249,7 @@ func (ugc *Ugc) GetRecommendCouponByShopId(shopId_ string) (interface{}, error) 
 	return APIInterface(ugc.config, "eleme.ugc.getRecommendCouponByShopId", params)
 }
 
-// 查询评价信息
+// 查询评价信息(推荐)
 // rateQuery 评价查询参数
 func (ugc *Ugc) GetORateResult(rateQuery_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
@@ -289,7 +289,7 @@ func (ugc *Ugc) SendBaiduCoupon(rateId_ string, shopId_ string, coupon_ interfac
 	return APIInterface(ugc.config, "eleme.ugc.sendBaiduCoupon", params)
 }
 
-// 根据rateId和shopId获取该订单评价用户的可赠券状态
+// 根据rateId和shopId获取该订单评价用户的可赠券状态(推荐)
 // rateId  评论编号(订单维度)
 // shopId  餐厅id
 // rateDataType 评价数据类型
@@ -299,5 +299,21 @@ func (ugc *Ugc) GetRateCouponStatus(rateId_ string, shopId_ string, rateDataType
 	params["shopId"] = shopId_
 	params["rateDataType"] = rateDataType_
 	return APIInterface(ugc.config, "eleme.ugc.getRateCouponStatus", params)
+}
+
+// 根据评价编号赠送代金券给评价用户(推荐)
+// ratingCouponDTO 赠券所需的参数
+func (ugc *Ugc) RatingCoupon(ratingCouponDTO_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["ratingCouponDTO"] = ratingCouponDTO_
+	return APIInterface(ugc.config, "eleme.ugc.ratingCoupon", params)
+}
+
+// 获取赠券扩展信息(推荐)
+// extendsQueries 评价赠券信息查询条件
+func (ugc *Ugc) GetCouponExtendsInfo(extendsQueries_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["extendsQueries"] = extendsQueries_
+	return APIInterface(ugc.config, "eleme.ugc.getCouponExtendsInfo", params)
 }
 

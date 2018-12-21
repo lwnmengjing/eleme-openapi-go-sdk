@@ -136,6 +136,12 @@
 
 
 ## Change Log
+### [1.31.3]
+	Release Date : 2018-12-21
+
+- [Feature] 订单评价服务新增更新接口
+- [Feature] 门店装修服务下线接口
+
 ### [1.31.2]
 	Release Date : 2018-12-7
 
