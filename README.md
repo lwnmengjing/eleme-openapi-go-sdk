@@ -136,6 +136,12 @@
 
 
 ## Change Log
+### [1.32.0]
+	Release Date : 2018-12-28
+
+- [Feature] 商品服务新增接口
+- [Feature] 服务市场服务新增接口
+
 ### [1.31.3]
 	Release Date : 2018-12-21
 
