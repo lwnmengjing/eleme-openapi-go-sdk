@@ -1,4 +1,4 @@
-// 商品服务
+// 商品服务 
 package elemeOpenApi
 
 // 查询连锁总店菜单及分组信息
@@ -707,60 +707,78 @@ func (item *Item) RemoveIngredientGroup(itemId_ int64) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.removeIngredientGroup", params)
 }
 
+// 查询连锁总店商品信息
+// iid 连锁总店商品Id
+func (product *Product) GetChainItem(iid_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["iid"] = iid_
+	return APIInterface(product.config, "eleme.product.chain.item.getChainItem", params)
+}
+
 // 批量查询连锁总店商品信息
 // iids 连锁总店商品Id列表
-func (product *Product) BatchGetItem(iids_ interface{}) (interface{}, error) {
+func (product *Product) BatchGetChainItem(iids_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["iids"] = iids_
-	return APIInterface(product.config, "eleme.product.chain.item.batchGetItem", params)
+	return APIInterface(product.config, "eleme.product.chain.item.batchGetChainItem", params)
+}
+
+// 添加连锁总店商品
+// gid 连锁总店商品分组Id
+// chainItemBaseDTO 商品创建信息
+func (product *Product) CreateChainItem(gid_ string, chainItemBaseDTO_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["gid"] = gid_
+	params["chainItemBaseDTO"] = chainItemBaseDTO_
+	return APIInterface(product.config, "eleme.product.chain.item.createChainItem", params)
 }
 
 // 批量添加连锁总店商品
 // gid 连锁总店商品分组Id
 // chainItemBaseDTOs 商品创建信息列表
-func (product *Product) BatchCreateItem(gid_ string, chainItemBaseDTOs_ interface{}) (interface{}, error) {
+func (product *Product) BatchCreateChainItem(gid_ string, chainItemBaseDTOs_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["gid"] = gid_
 	params["chainItemBaseDTOs"] = chainItemBaseDTOs_
-	return APIInterface(product.config, "eleme.product.chain.item.batchCreateItem", params)
+	return APIInterface(product.config, "eleme.product.chain.item.batchCreateChainItem", params)
 }
 
 // 替换连锁总店商品
 // gid 商品分组Id
 // chainItemDTO 商品替换信息
-func (product *Product) ReplaceItem(gid_ string, chainItemDTO_ interface{}) (interface{}, error) {
+func (product *Product) ReplaceChainItem(gid_ string, chainItemDTO_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["gid"] = gid_
 	params["chainItemDTO"] = chainItemDTO_
-	return APIInterface(product.config, "eleme.product.chain.item.replaceItem", params)
+	return APIInterface(product.config, "eleme.product.chain.item.replaceChainItem", params)
 }
 
 // 批量替换连锁总店商品
 // gid 商品分组Id
 // chainItemDTOs 商品替换信息列表
-func (product *Product) BatchReplaceItem(gid_ string, chainItemDTOs_ interface{}) (interface{}, error) {
+func (product *Product) BatchReplaceChainItem(gid_ string, chainItemDTOs_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["gid"] = gid_
 	params["chainItemDTOs"] = chainItemDTOs_
-	return APIInterface(product.config, "eleme.product.chain.item.batchReplaceItem", params)
+	return APIInterface(product.config, "eleme.product.chain.item.batchReplaceChainItem", params)
 }
 
 // 更新连锁总店商品不包含规格信息
 // iid 连锁总店商品Id
 // chainItemBaseDTO 商品更新信息
-func (product *Product) UpdateItemWithoutSku(iid_ string, chainItemBaseDTO_ interface{}) (interface{}, error) {
+func (product *Product) UpdateChainItemWithoutSku(iid_ string, chainItemBaseDTO_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["iid"] = iid_
 	params["chainItemBaseDTO"] = chainItemBaseDTO_
-	return APIInterface(product.config, "eleme.product.chain.item.updateItemWithoutSku", params)
+	return APIInterface(product.config, "eleme.product.chain.item.updateChainItemWithoutSku", params)
 }
 
 // 删除连锁总店商品
 // iid 连锁总店商品Id
-func (product *Product) DeleteItem(iid_ string) (interface{}, error) {
+func (product *Product) DeleteChainItem(iid_ string) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["iid"] = iid_
-	return APIInterface(product.config, "eleme.product.chain.item.deleteItem", params)
+	return APIInterface(product.config, "eleme.product.chain.item.deleteChainItem", params)
 }
 
 // 查询连锁总店商品规格
@@ -830,3 +848,4 @@ func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
 	params["hash"] = hash_
 	return APIInterface(file.config, "eleme.file.getImageUrl", params)
 }
+

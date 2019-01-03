@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.1]
+	Release Date : 2019-1-3
+
+- [Feature] 商品服务新增更新接口
+
 ### [1.32.0]
 	Release Date : 2018-12-28
 
