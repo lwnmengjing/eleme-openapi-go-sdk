@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.2]
+	Release Date : 2019-2-22
+
+- [Feature] 餐厅入口流量服务下线接口
+
 ### [1.32.1]
 	Release Date : 2019-1-3
 
