@@ -1,358 +1,36 @@
 // 商品服务 
 package elemeOpenApi
 
-// 查询连锁总店菜单及分组信息
-// mid 菜单Id
-func (product *Product) GetMenuWithGroup(mid_ string) (interface{}, error) {
+// 上传图片，返回图片的hash值
+// image 文件内容base64编码值
+func (file *File) UploadImage(image_ string) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["mid"] = mid_
-	return APIInterface(product.config, "eleme.product.chain.menu.getMenuWithGroup", params)
+	params["image"] = image_
+	return APIInterface(file.config, "eleme.file.uploadImage", params)
 }
 
-// 分页查询连锁总店下的菜单列表
-// offset 分页起始
-// limit 一页个数
-func (product *Product) QueryMenuByPage(offset_ int64, limit_ int64) (interface{}, error) {
+// 通过远程URL上传图片，返回图片的hash值
+// url 远程Url地址
+func (file *File) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["offset"] = offset_
-	params["limit"] = limit_
-	return APIInterface(product.config, "eleme.product.chain.menu.queryMenuByPage", params)
+	params["url"] = url_
+	return APIInterface(file.config, "eleme.file.uploadImageWithRemoteUrl", params)
 }
 
-// 添加连锁总店菜单
-// chainMenuBaseDTO 添加的菜单信息
-func (product *Product) CreateMenu(chainMenuBaseDTO_ interface{}) (interface{}, error) {
+// 获取上传文件的访问URL，返回文件的Url地址
+// hash 图片hash值
+func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["chainMenuBaseDTO"] = chainMenuBaseDTO_
-	return APIInterface(product.config, "eleme.product.chain.menu.createMenu", params)
+	params["hash"] = hash_
+	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
 }
 
-// 更新连锁总店菜单
-// mid 菜单Id
-// chainMenuBaseDTO 菜单更新信息
-func (product *Product) UpdateMenu(mid_ string, chainMenuBaseDTO_ interface{}) (interface{}, error) {
+// 获取上传图片的url地址(新版)
+// hash 图片hash值
+func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["mid"] = mid_
-	params["chainMenuBaseDTO"] = chainMenuBaseDTO_
-	return APIInterface(product.config, "eleme.product.chain.menu.updateMenu", params)
-}
-
-// 删除连锁总店菜单
-// mid 菜单Id
-func (product *Product) DeleteMenu(mid_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["mid"] = mid_
-	return APIInterface(product.config, "eleme.product.chain.menu.deleteMenu", params)
-}
-
-// 查询连锁总店商品分组
-// gid 连锁总店商品分组Id
-func (product *Product) GetGroup(gid_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["gid"] = gid_
-	return APIInterface(product.config, "eleme.product.chain.group.getGroup", params)
-}
-
-// 查询连锁总店商品分组及商品详情
-// gid 连锁总店商品分组Id
-func (product *Product) GetGroupWithItem(gid_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["gid"] = gid_
-	return APIInterface(product.config, "eleme.product.chain.group.getGroupWithItem", params)
-}
-
-// 添加连锁总店商品分组
-// mid 菜单Id
-// chainGroupBaseDTO 分组创建信息
-func (product *Product) CreateGroup(mid_ string, chainGroupBaseDTO_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["mid"] = mid_
-	params["chainGroupBaseDTO"] = chainGroupBaseDTO_
-	return APIInterface(product.config, "eleme.product.chain.group.createGroup", params)
-}
-
-// 批量添加连锁总店商品分组
-// mid 菜单Id
-// chainGroupBaseDTOs 分组创建信息列表
-func (product *Product) BatchCreateGroup(mid_ string, chainGroupBaseDTOs_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["mid"] = mid_
-	params["chainGroupBaseDTOs"] = chainGroupBaseDTOs_
-	return APIInterface(product.config, "eleme.product.chain.group.batchCreateGroup", params)
-}
-
-// 更新连锁总店商品分组
-// gid 连锁总店商品分组Id
-// chainGroupBaseDTO 分组更新信息
-func (product *Product) UpdateGroup(gid_ string, chainGroupBaseDTO_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["gid"] = gid_
-	params["chainGroupBaseDTO"] = chainGroupBaseDTO_
-	return APIInterface(product.config, "eleme.product.chain.group.updateGroup", params)
-}
-
-// 删除连锁总店商品分组
-// gid 连锁总店商品分组Id
-func (product *Product) DeleteGroup(gid_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["gid"] = gid_
-	return APIInterface(product.config, "eleme.product.chain.group.deleteGroup", params)
-}
-
-// 查询连锁总店商品规格关联的单店商品规格信息
-// pId 连锁总店商品规格Id
-func (product *Product) GetRelationByPid(pId_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["pId"] = pId_
-	return APIInterface(product.config, "eleme.product.chain.pid.getRelationByPid", params)
-}
-
-// 设置连锁总店商品规格与单店商品规格关系
-// pId 连锁总店商品规格Id
-// specId 子店商品规格Id
-func (product *Product) SetPid(pId_ string, specId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["pId"] = pId_
-	params["specId"] = specId_
-	return APIInterface(product.config, "eleme.product.chain.pid.setPid", params)
-}
-
-// 批量设置连锁总店商品规格与单店商品规格关系
-// pId 连锁总店商品规格Id
-// specIds 子店商品规格Id列表
-func (product *Product) BatchSetPid(pId_ string, specIds_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["pId"] = pId_
-	params["specIds"] = specIds_
-	return APIInterface(product.config, "eleme.product.chain.pid.batchSetPid", params)
-}
-
-// 解除连锁总店商品规格与单店商品规格关系
-// specId 子店的商品规格Id
-func (product *Product) DeletePidBySpecId(specId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["specId"] = specId_
-	return APIInterface(product.config, "eleme.product.chain.pid.deletePidBySpecId", params)
-}
-
-// 批量解除连锁总店商品规格与单店商品规格关系
-// specIds 子店的商品规格Id列表
-func (product *Product) BatchDeletePidBySpecId(specIds_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["specIds"] = specIds_
-	return APIInterface(product.config, "eleme.product.chain.pid.batchDeletePidBySpecId", params)
-}
-
-// 查询店铺商品分类
-// shopId 店铺Id
-func (category *Category) GetShopCategories(shopId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	return APIInterface(category.config, "eleme.product.category.getShopCategories", params)
-}
-
-// 查询店铺商品分类，包含二级分类
-// shopId 店铺Id
-func (category *Category) GetShopCategoriesWithChildren(shopId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	return APIInterface(category.config, "eleme.product.category.getShopCategoriesWithChildren", params)
-}
-
-// 查询商品分类详情
-// categoryId 商品分类Id
-func (category *Category) GetCategory(categoryId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	return APIInterface(category.config, "eleme.product.category.getCategory", params)
-}
-
-// 查询商品分类详情，包含二级分类
-// categoryId 商品分类Id
-func (category *Category) GetCategoryWithChildren(categoryId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	return APIInterface(category.config, "eleme.product.category.getCategoryWithChildren", params)
-}
-
-// 添加商品分类
-// shopId 店铺Id
-// name 商品分类名称，长度需在50字以内
-// description 商品分类描述，长度需在50字以内
-func (category *Category) CreateCategory(shopId_ int64, name_ string, description_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["name"] = name_
-	params["description"] = description_
-	return APIInterface(category.config, "eleme.product.category.createCategory", params)
-}
-
-// 添加商品分类，支持二级分类
-// shopId 店铺Id
-// name 商品分类名称，长度需在50字以内
-// parentId 父分类ID，如果没有可以填0
-// description 商品分类描述，长度需在50字以内
-func (category *Category) CreateCategoryWithChildren(shopId_ int64, name_ string, parentId_ int64, description_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["name"] = name_
-	params["parentId"] = parentId_
-	params["description"] = description_
-	return APIInterface(category.config, "eleme.product.category.createCategoryWithChildren", params)
-}
-
-// 更新商品分类
-// categoryId 商品分类Id
-// name 商品分类名称，长度需在50字以内
-// description 商品分类描述，长度需在50字以内
-func (category *Category) UpdateCategory(categoryId_ int64, name_ string, description_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	params["name"] = name_
-	params["description"] = description_
-	return APIInterface(category.config, "eleme.product.category.updateCategory", params)
-}
-
-// 更新商品分类，包含二级分类
-// categoryId 商品分类Id
-// name 商品分类名称，长度需在50字以内
-// parentId 父分类ID，如果没有可以填0
-// description 商品分类描述，长度需在50字以内
-func (category *Category) UpdateCategoryWithChildren(categoryId_ int64, name_ string, parentId_ int64, description_ string) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	params["name"] = name_
-	params["parentId"] = parentId_
-	params["description"] = description_
-	return APIInterface(category.config, "eleme.product.category.updateCategoryWithChildren", params)
-}
-
-// 删除商品分类
-// categoryId 商品分类Id
-func (category *Category) RemoveCategory(categoryId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	return APIInterface(category.config, "eleme.product.category.removeCategory", params)
-}
-
-// 删除商品分类(新版)
-// categoryId 商品分类Id
-func (category *Category) InvalidCategory(categoryId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	return APIInterface(category.config, "eleme.product.category.invalidCategory", params)
-}
-
-// 设置分类排序
-// shopId 饿了么店铺Id
-// categoryIds 需要排序的分类Id
-func (category *Category) SetCategoryPositions(shopId_ int64, categoryIds_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["categoryIds"] = categoryIds_
-	return APIInterface(category.config, "eleme.product.category.setCategoryPositions", params)
-}
-
-// 设置分类排序(新版)
-// shopId 饿了么店铺Id
-// categoryIds 需要排序的全部一级分类Id
-func (category *Category) SetCategorySequence(shopId_ int64, categoryIds_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["categoryIds"] = categoryIds_
-	return APIInterface(category.config, "eleme.product.category.setCategorySequence", params)
-}
-
-// 设置二级分类排序
-// shopId 饿了么店铺Id
-// categoryWithChildrenIds 需要排序的父分类Id，及其下属的二级分类ID
-func (category *Category) SetCategoryPositionsWithChildren(shopId_ int64, categoryWithChildrenIds_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["categoryWithChildrenIds"] = categoryWithChildrenIds_
-	return APIInterface(category.config, "eleme.product.category.setCategoryPositionsWithChildren", params)
-}
-
-// 查询商品后台类目
-// shopId 店铺Id
-func (category *Category) GetBackCategory(shopId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	return APIInterface(category.config, "eleme.product.category.getBackCategory", params)
-}
-
-// 设置分类类型
-// shopId 店铺Id
-// categoryId 商品分类Id
-// categoryType 分类类型
-func (category *Category) SetCategoryType(shopId_ int64, categoryId_ int64, categoryType_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["categoryId"] = categoryId_
-	params["categoryType"] = categoryType_
-	return APIInterface(category.config, "eleme.product.category.setCategoryType", params)
-}
-
-// 设置分组分时段置顶
-// shopId 店铺Id
-// categoryId 商品分类Id
-// dayPartingStick 置顶时间设置
-func (category *Category) SetDayPartingStickTime(shopId_ int64, categoryId_ int64, dayPartingStick_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["categoryId"] = categoryId_
-	params["dayPartingStick"] = dayPartingStick_
-	return APIInterface(category.config, "eleme.product.category.setDayPartingStickTime", params)
-}
-
-// 删除分组的分时置顶功能
-// shopId 店铺Id
-// categoryId 商品分类Id
-func (category *Category) RemoveDayPartingStickTime(shopId_ int64, categoryId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["categoryId"] = categoryId_
-	return APIInterface(category.config, "eleme.product.category.removeDayPartingStickTime", params)
-}
-
-// 添加套餐
-// categoryId 分类Id
-// oPackage 套餐属性
-func (package_ *Package) CreatePackage(categoryId_ int64, oPackage_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["categoryId"] = categoryId_
-	params["oPackage"] = oPackage_
-	return APIInterface(package_.config, "eleme.product.package.createPackage", params)
-}
-
-// 修改套餐基本信息
-// itemId 新套餐id即OItem中的商品Id
-// categoryId 分类Id即OCategory中的分类Id
-// update 套餐基本信息
-func (package_ *Package) UpdatePackageContent(itemId_ int64, categoryId_ int64, update_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["itemId"] = itemId_
-	params["categoryId"] = categoryId_
-	params["update"] = update_
-	return APIInterface(package_.config, "eleme.product.package.updatePackageContent", params)
-}
-
-// 修改套餐和主料的关联关系
-// itemId 新套餐id即OItem中的商品Id
-// packages 套餐关系
-func (package_ *Package) UpdatePackageRelation(itemId_ int64, packages_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["itemId"] = itemId_
-	params["packages"] = packages_
-	return APIInterface(package_.config, "eleme.product.package.updatePackageRelation", params)
-}
-
-// 删除套餐
-// itemId 套餐Id
-func (package_ *Package) RemovePackage(itemId_ int64) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["itemId"] = itemId_
-	return APIInterface(package_.config, "eleme.product.package.removePackage", params)
+	params["hash"] = hash_
+	return APIInterface(file.config, "eleme.file.getImageUrl", params)
 }
 
 // 获取一个分类下的所有商品
@@ -707,6 +385,314 @@ func (item *Item) RemoveIngredientGroup(itemId_ int64) (interface{}, error) {
 	return APIInterface(item.config, "eleme.product.item.removeIngredientGroup", params)
 }
 
+// 获取商品原材料数据(新版)
+// shopId 店铺ID
+func (item *Item) GetItemMaterialTree(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(item.config, "eleme.product.item.getItemMaterialTree", params)
+}
+
+// 查询店铺商品分类
+// shopId 店铺Id
+func (category *Category) GetShopCategories(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(category.config, "eleme.product.category.getShopCategories", params)
+}
+
+// 查询店铺商品分类，包含二级分类
+// shopId 店铺Id
+func (category *Category) GetShopCategoriesWithChildren(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(category.config, "eleme.product.category.getShopCategoriesWithChildren", params)
+}
+
+// 查询商品分类详情
+// categoryId 商品分类Id
+func (category *Category) GetCategory(categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.getCategory", params)
+}
+
+// 查询商品分类详情，包含二级分类
+// categoryId 商品分类Id
+func (category *Category) GetCategoryWithChildren(categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.getCategoryWithChildren", params)
+}
+
+// 添加商品分类
+// shopId 店铺Id
+// name 商品分类名称，长度需在50字以内
+// description 商品分类描述，长度需在50字以内
+func (category *Category) CreateCategory(shopId_ int64, name_ string, description_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["name"] = name_
+	params["description"] = description_
+	return APIInterface(category.config, "eleme.product.category.createCategory", params)
+}
+
+// 添加商品分类，支持二级分类
+// shopId 店铺Id
+// name 商品分类名称，长度需在50字以内
+// parentId 父分类ID，如果没有可以填0
+// description 商品分类描述，长度需在50字以内
+func (category *Category) CreateCategoryWithChildren(shopId_ int64, name_ string, parentId_ int64, description_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["name"] = name_
+	params["parentId"] = parentId_
+	params["description"] = description_
+	return APIInterface(category.config, "eleme.product.category.createCategoryWithChildren", params)
+}
+
+// 更新商品分类
+// categoryId 商品分类Id
+// name 商品分类名称，长度需在50字以内
+// description 商品分类描述，长度需在50字以内
+func (category *Category) UpdateCategory(categoryId_ int64, name_ string, description_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["name"] = name_
+	params["description"] = description_
+	return APIInterface(category.config, "eleme.product.category.updateCategory", params)
+}
+
+// 更新商品分类，包含二级分类
+// categoryId 商品分类Id
+// name 商品分类名称，长度需在50字以内
+// parentId 父分类ID，如果没有可以填0
+// description 商品分类描述，长度需在50字以内
+func (category *Category) UpdateCategoryWithChildren(categoryId_ int64, name_ string, parentId_ int64, description_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["name"] = name_
+	params["parentId"] = parentId_
+	params["description"] = description_
+	return APIInterface(category.config, "eleme.product.category.updateCategoryWithChildren", params)
+}
+
+// 删除商品分类
+// categoryId 商品分类Id
+func (category *Category) RemoveCategory(categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.removeCategory", params)
+}
+
+// 删除商品分类(新版)
+// categoryId 商品分类Id
+func (category *Category) InvalidCategory(categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.invalidCategory", params)
+}
+
+// 设置分类排序
+// shopId 饿了么店铺Id
+// categoryIds 需要排序的分类Id
+func (category *Category) SetCategoryPositions(shopId_ int64, categoryIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryIds"] = categoryIds_
+	return APIInterface(category.config, "eleme.product.category.setCategoryPositions", params)
+}
+
+// 设置分类排序(新版)
+// shopId 饿了么店铺Id
+// categoryIds 需要排序的全部一级分类Id
+func (category *Category) SetCategorySequence(shopId_ int64, categoryIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryIds"] = categoryIds_
+	return APIInterface(category.config, "eleme.product.category.setCategorySequence", params)
+}
+
+// 设置二级分类排序
+// shopId 饿了么店铺Id
+// categoryWithChildrenIds 需要排序的父分类Id，及其下属的二级分类ID
+func (category *Category) SetCategoryPositionsWithChildren(shopId_ int64, categoryWithChildrenIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryWithChildrenIds"] = categoryWithChildrenIds_
+	return APIInterface(category.config, "eleme.product.category.setCategoryPositionsWithChildren", params)
+}
+
+// 查询商品后台类目
+// shopId 店铺Id
+func (category *Category) GetBackCategory(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(category.config, "eleme.product.category.getBackCategory", params)
+}
+
+// 设置分类类型
+// shopId 店铺Id
+// categoryId 商品分类Id
+// categoryType 分类类型
+func (category *Category) SetCategoryType(shopId_ int64, categoryId_ int64, categoryType_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryId"] = categoryId_
+	params["categoryType"] = categoryType_
+	return APIInterface(category.config, "eleme.product.category.setCategoryType", params)
+}
+
+// 设置分组分时段置顶
+// shopId 店铺Id
+// categoryId 商品分类Id
+// dayPartingStick 置顶时间设置
+func (category *Category) SetDayPartingStickTime(shopId_ int64, categoryId_ int64, dayPartingStick_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryId"] = categoryId_
+	params["dayPartingStick"] = dayPartingStick_
+	return APIInterface(category.config, "eleme.product.category.setDayPartingStickTime", params)
+}
+
+// 删除分组的分时置顶功能
+// shopId 店铺Id
+// categoryId 商品分类Id
+func (category *Category) RemoveDayPartingStickTime(shopId_ int64, categoryId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["categoryId"] = categoryId_
+	return APIInterface(category.config, "eleme.product.category.removeDayPartingStickTime", params)
+}
+
+// 添加套餐
+// categoryId 分类Id
+// oPackage 套餐属性
+func (package_ *Package) CreatePackage(categoryId_ int64, oPackage_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["categoryId"] = categoryId_
+	params["oPackage"] = oPackage_
+	return APIInterface(package_.config, "eleme.product.package.createPackage", params)
+}
+
+// 修改套餐基本信息
+// itemId 新套餐id即OItem中的商品Id
+// categoryId 分类Id即OCategory中的分类Id
+// update 套餐基本信息
+func (package_ *Package) UpdatePackageContent(itemId_ int64, categoryId_ int64, update_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	params["categoryId"] = categoryId_
+	params["update"] = update_
+	return APIInterface(package_.config, "eleme.product.package.updatePackageContent", params)
+}
+
+// 修改套餐和主料的关联关系
+// itemId 新套餐id即OItem中的商品Id
+// packages 套餐关系
+func (package_ *Package) UpdatePackageRelation(itemId_ int64, packages_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	params["packages"] = packages_
+	return APIInterface(package_.config, "eleme.product.package.updatePackageRelation", params)
+}
+
+// 删除套餐
+// itemId 套餐Id
+func (package_ *Package) RemovePackage(itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	return APIInterface(package_.config, "eleme.product.package.removePackage", params)
+}
+
+// 查询连锁总店商品规格关联的单店商品规格信息
+// pId 连锁总店商品规格Id
+func (product *Product) GetRelationByPid(pId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["pId"] = pId_
+	return APIInterface(product.config, "eleme.product.chain.pid.getRelationByPid", params)
+}
+
+// 设置连锁总店商品规格与单店商品规格关系
+// pId 连锁总店商品规格Id
+// specId 子店商品规格Id
+func (product *Product) SetPid(pId_ string, specId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["pId"] = pId_
+	params["specId"] = specId_
+	return APIInterface(product.config, "eleme.product.chain.pid.setPid", params)
+}
+
+// 批量设置连锁总店商品规格与单店商品规格关系
+// pId 连锁总店商品规格Id
+// specIds 子店商品规格Id列表
+func (product *Product) BatchSetPid(pId_ string, specIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["pId"] = pId_
+	params["specIds"] = specIds_
+	return APIInterface(product.config, "eleme.product.chain.pid.batchSetPid", params)
+}
+
+// 解除连锁总店商品规格与单店商品规格关系
+// specId 子店的商品规格Id
+func (product *Product) DeletePidBySpecId(specId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["specId"] = specId_
+	return APIInterface(product.config, "eleme.product.chain.pid.deletePidBySpecId", params)
+}
+
+// 批量解除连锁总店商品规格与单店商品规格关系
+// specIds 子店的商品规格Id列表
+func (product *Product) BatchDeletePidBySpecId(specIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["specIds"] = specIds_
+	return APIInterface(product.config, "eleme.product.chain.pid.batchDeletePidBySpecId", params)
+}
+
+// 查询连锁总店菜单及分组信息
+// mid 菜单Id
+func (product *Product) GetMenuWithGroup(mid_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["mid"] = mid_
+	return APIInterface(product.config, "eleme.product.chain.menu.getMenuWithGroup", params)
+}
+
+// 分页查询连锁总店下的菜单列表
+// offset 分页起始
+// limit 一页个数
+func (product *Product) QueryMenuByPage(offset_ int64, limit_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["offset"] = offset_
+	params["limit"] = limit_
+	return APIInterface(product.config, "eleme.product.chain.menu.queryMenuByPage", params)
+}
+
+// 添加连锁总店菜单
+// chainMenuBaseDTO 添加的菜单信息
+func (product *Product) CreateMenu(chainMenuBaseDTO_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["chainMenuBaseDTO"] = chainMenuBaseDTO_
+	return APIInterface(product.config, "eleme.product.chain.menu.createMenu", params)
+}
+
+// 更新连锁总店菜单
+// mid 菜单Id
+// chainMenuBaseDTO 菜单更新信息
+func (product *Product) UpdateMenu(mid_ string, chainMenuBaseDTO_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["mid"] = mid_
+	params["chainMenuBaseDTO"] = chainMenuBaseDTO_
+	return APIInterface(product.config, "eleme.product.chain.menu.updateMenu", params)
+}
+
+// 删除连锁总店菜单
+// mid 菜单Id
+func (product *Product) DeleteMenu(mid_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["mid"] = mid_
+	return APIInterface(product.config, "eleme.product.chain.menu.deleteMenu", params)
+}
+
 // 查询连锁总店商品信息
 // iid 连锁总店商品Id
 func (product *Product) GetChainItem(iid_ string) (interface{}, error) {
@@ -817,35 +803,57 @@ func (product *Product) DeleteSku(pId_ string) (interface{}, error) {
 	return APIInterface(product.config, "eleme.product.chain.item.deleteSku", params)
 }
 
-// 上传图片，返回图片的hash值
-// image 文件内容base64编码值
-func (file *File) UploadImage(image_ string) (interface{}, error) {
+// 查询连锁总店商品分组
+// gid 连锁总店商品分组Id
+func (product *Product) GetGroup(gid_ string) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["image"] = image_
-	return APIInterface(file.config, "eleme.file.uploadImage", params)
+	params["gid"] = gid_
+	return APIInterface(product.config, "eleme.product.chain.group.getGroup", params)
 }
 
-// 通过远程URL上传图片，返回图片的hash值
-// url 远程Url地址
-func (file *File) UploadImageWithRemoteUrl(url_ string) (interface{}, error) {
+// 查询连锁总店商品分组及商品详情
+// gid 连锁总店商品分组Id
+func (product *Product) GetGroupWithItem(gid_ string) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["url"] = url_
-	return APIInterface(file.config, "eleme.file.uploadImageWithRemoteUrl", params)
+	params["gid"] = gid_
+	return APIInterface(product.config, "eleme.product.chain.group.getGroupWithItem", params)
 }
 
-// 获取上传文件的访问URL，返回文件的Url地址
-// hash 图片hash值
-func (file *File) GetUploadedUrl(hash_ string) (interface{}, error) {
+// 添加连锁总店商品分组
+// mid 菜单Id
+// chainGroupBaseDTO 分组创建信息
+func (product *Product) CreateGroup(mid_ string, chainGroupBaseDTO_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["hash"] = hash_
-	return APIInterface(file.config, "eleme.file.getUploadedUrl", params)
+	params["mid"] = mid_
+	params["chainGroupBaseDTO"] = chainGroupBaseDTO_
+	return APIInterface(product.config, "eleme.product.chain.group.createGroup", params)
 }
 
-// 获取上传图片的url地址(新版)
-// hash 图片hash值
-func (file *File) GetImageUrl(hash_ string) (interface{}, error) {
+// 批量添加连锁总店商品分组
+// mid 菜单Id
+// chainGroupBaseDTOs 分组创建信息列表
+func (product *Product) BatchCreateGroup(mid_ string, chainGroupBaseDTOs_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
-	params["hash"] = hash_
-	return APIInterface(file.config, "eleme.file.getImageUrl", params)
+	params["mid"] = mid_
+	params["chainGroupBaseDTOs"] = chainGroupBaseDTOs_
+	return APIInterface(product.config, "eleme.product.chain.group.batchCreateGroup", params)
+}
+
+// 更新连锁总店商品分组
+// gid 连锁总店商品分组Id
+// chainGroupBaseDTO 分组更新信息
+func (product *Product) UpdateGroup(gid_ string, chainGroupBaseDTO_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["gid"] = gid_
+	params["chainGroupBaseDTO"] = chainGroupBaseDTO_
+	return APIInterface(product.config, "eleme.product.chain.group.updateGroup", params)
+}
+
+// 删除连锁总店商品分组
+// gid 连锁总店商品分组Id
+func (product *Product) DeleteGroup(gid_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["gid"] = gid_
+	return APIInterface(product.config, "eleme.product.chain.group.deleteGroup", params)
 }
 
