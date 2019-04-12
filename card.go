@@ -83,3 +83,11 @@ func (card *Card) GetUserByToken(userToken_ string) (interface{}, error) {
 	return APIInterface(card.config, "eleme.card.getUserByToken", params)
 }
 
+// 确认是否发券接口
+// couponRequest 是否发券请求
+func (card *Card) ConfirmSendCoupon(couponRequest_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["couponRequest"] = couponRequest_
+	return APIInterface(card.config, "eleme.card.confirmSendCoupon", params)
+}
+
