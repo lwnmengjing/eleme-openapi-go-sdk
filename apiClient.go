@@ -87,12 +87,17 @@ type Skuchain struct {
 	config *Config
 }
 
+type Marketing struct {
+	config *Config
+}
+
 type Activity struct {
 	Food        Food
 	Flash       Flash
 	Shippingfee Shippingfee
 	Coupon      Coupon
 	Skuchain    Skuchain
+	Marketing   Marketing
 	config      *Config
 }
 
@@ -215,6 +220,7 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Activity.Food.config = &client.config
 	client.Activity.Coupon.config = &client.config
 	client.Activity.Skuchain.config = &client.config
+	client.Activity.Marketing.config = &client.config
 	client.Ugc.config = &client.config
 	client.Market.config = &client.config
 	client.Flow.config = &client.config

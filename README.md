@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.5]
+	Release Date : 2019-4-15
+
+- [Feature] 活动服务新增接口
+
 ### [1.32.4]
 	Release Date : 2019-4-12
 

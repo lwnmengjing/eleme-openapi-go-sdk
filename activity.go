@@ -353,6 +353,14 @@ func (coupon *Coupon) UpdateCouponStatus(criteria_ interface{}, type_ int) (inte
 	return APIInterface(coupon.config, "eleme.activity.coupon.updateCouponStatus", params)
 }
 
+// 查询订单内营销相关数据
+// orderId 饿了么订单Id
+func (marketing *Marketing) QueryOrderSubsidy(orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	return APIInterface(marketing.config, "eleme.activity.marketing.queryOrderSubsidy", params)
+}
+
 // 创建并绑定连锁店特价活动
 // activity 活动创建信息
 // chainId 连锁店Id
