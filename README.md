@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.6]
+	Release Date : 2019-5-10
+
+- [Feature] 活动服务下线接口
+
 ### [1.32.5]
 	Release Date : 2019-4-15
 

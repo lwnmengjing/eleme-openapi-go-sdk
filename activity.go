@@ -159,26 +159,6 @@ func (food *Food) UnbindFoodActivity(activityId_ int64, shopId_ int64) (interfac
 	return APIInterface(food.config, "eleme.activity.food.unbindFoodActivity", params)
 }
 
-// 创建红包活动(即将下线)
-// createInfo 创建红包活动的结构体
-func (coupon *Coupon) CreateCouponActivity(createInfo_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["createInfo"] = createInfo_
-	return APIInterface(coupon.config, "eleme.activity.coupon.createCouponActivity", params)
-}
-
-// 向指定用户发放红包(即将下线)
-// shopId 店铺Id
-// couponActivityId 红包活动Id
-// mobiles 需要发放红包的用户手机号列表
-func (coupon *Coupon) GiveOutCoupons(shopId_ int64, couponActivityId_ int64, mobiles_ interface{}) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["couponActivityId"] = couponActivityId_
-	params["mobiles"] = mobiles_
-	return APIInterface(coupon.config, "eleme.activity.coupon.giveOutCoupons", params)
-}
-
 // 定向赠红包
 // shopId 店铺Id
 // mobile 需要发放红包的用户手机号
@@ -189,38 +169,6 @@ func (coupon *Coupon) PresentCoupon(shopId_ int64, mobile_ string, couponTemplat
 	params["mobile"] = mobile_
 	params["couponTemplate"] = couponTemplate_
 	return APIInterface(coupon.config, "eleme.activity.coupon.presentCoupon", params)
-}
-
-// 分页查询店铺红包活动信息(即将下线)
-// shopId 店铺Id
-// couponActivityType 红包活动类型
-// activityStatus 活动状态
-// pageNo 页码（第几页）
-// pageSize 每页数量
-func (coupon *Coupon) QueryCouponActivities(shopId_ int64, couponActivityType_ interface{}, activityStatus_ interface{}, pageNo_ int, pageSize_ int) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["couponActivityType"] = couponActivityType_
-	params["activityStatus"] = activityStatus_
-	params["pageNo"] = pageNo_
-	params["pageSize"] = pageSize_
-	return APIInterface(coupon.config, "eleme.activity.coupon.queryCouponActivities", params)
-}
-
-// 分页查询店铺红包领取详情(即将下线)
-// shopId 店铺Id
-// couponActivityId 红包活动Id
-// couponStatus 红包状态
-// pageNo 页码（第几页）
-// pageSize 每页数量
-func (coupon *Coupon) QueryReceivedCouponDetails(shopId_ int64, couponActivityId_ int64, couponStatus_ interface{}, pageNo_ int, pageSize_ int) (interface{}, error) {
-	params := make(map[string]interface{})
-	params["shopId"] = shopId_
-	params["couponActivityId"] = couponActivityId_
-	params["couponStatus"] = couponStatus_
-	params["pageNo"] = pageNo_
-	params["pageSize"] = pageSize_
-	return APIInterface(coupon.config, "eleme.activity.coupon.queryReceivedCouponDetails", params)
 }
 
 // 托管单店红包服务
