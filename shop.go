@@ -137,6 +137,14 @@ func (shop *Shop) GetShopVocation(shopId_ int64) (interface{}, error) {
 	return APIInterface(shop.config, "eleme.shop.getShopVocation", params)
 }
 
+// 查询店铺主体资质信息
+// shopId 店铺id
+func (shop *Shop) GetShopLicense(shopId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	return APIInterface(shop.config, "eleme.shop.getShopLicense", params)
+}
+
 // 提交开店申请接口
 // openStoreMessage 开店申请表单
 func (setup *Setup) SubmitOpenStoreMessageAudit(openStoreMessage_ interface{}) (interface{}, error) {

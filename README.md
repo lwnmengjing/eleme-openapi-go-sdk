@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.7]
+	Release Date : 2019-5-24
+
+- [Feature] 店铺服务新增接口
+
 ### [1.32.6]
 	Release Date : 2019-5-10
 
