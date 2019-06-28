@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.8]
+	Release Date : 2019-6-28
+
+- [Feature] 内容服务下线接口
+
 ### [1.32.7]
 	Release Date : 2019-5-24
 
