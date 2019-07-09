@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.9]
+	Release Date : 2019-7-09
+
+- [Feature] 消息服务新增接口
+
 ### [1.32.8]
 	Release Date : 2019-6-28
 

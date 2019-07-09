@@ -17,3 +17,11 @@ func (message *Message) GetNonReachedOMessages(appId_ int) (interface{}, error) 
 	return APIInterface(message.config, "eleme.message.getNonReachedOMessages", params)
 }
 
+// 获取http推送失败的消息
+// request 查询推送失败消息日志结构体
+func (message *Message) QueryFailedMessageLog(request_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["request"] = request_
+	return APIInterface(message.config, "eleme.message.queryFailedMessageLog", params)
+}
+
