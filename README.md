@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.10]
+	Release Date : 2019-7-19
+
+- [Feature] 服务市场服务新增接口
+
 ### [1.32.9]
 	Release Date : 2019-7-09
 

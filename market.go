@@ -31,3 +31,11 @@ func (market *Market) QueryOrder(orderNo_ string) (interface{}, error) {
 	return APIInterface(market.config, "eleme.market.queryOrder", params)
 }
 
+// 服务市场确认订单
+// orderNo 服务市场订单编号
+func (market *Market) ConfirmOrder(orderNo_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderNo"] = orderNo_
+	return APIInterface(market.config, "eleme.market.confirmOrder", params)
+}
+
