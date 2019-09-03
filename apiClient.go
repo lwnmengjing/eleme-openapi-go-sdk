@@ -15,6 +15,7 @@ type APIClient struct {
 	Flow       Flow
 	Content    Content
 	Decoration Decoration
+	Diagnosis  Diagnosis
 	Card       Card
 	Cpc        Cpc
 	Sms        Sms
@@ -193,6 +194,10 @@ type Chain struct {
 	config *Config
 }
 
+type Diagnosis struct{
+	config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -239,4 +244,5 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Data.config = &client.config
 	client.Data.Single.config = &client.config
 	client.Data.Chain.config = &client.config
+	client.Diagnosis.config = &client.config
 }

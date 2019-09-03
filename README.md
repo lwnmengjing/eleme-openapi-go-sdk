@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.11]
+	Release Date : 2019-9-03
+
+- [Feature] 新增经营体检服务
+
 ### [1.32.10]
 	Release Date : 2019-7-19
 
