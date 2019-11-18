@@ -136,10 +136,16 @@
 
 
 ## Change Log
+### [1.32.13]
+	Release Date : 2019-11-18
+
+- [Feature] 新增商户信用分服务，订单服务更新接口
+
 ### [1.32.12]
 	Release Date : 2019-9-26
 
 - [Feature] 活动服务下线接口
+
 ### [1.32.11]
 	Release Date : 2019-9-03
 

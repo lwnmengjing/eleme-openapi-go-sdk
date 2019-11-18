@@ -1,26 +1,27 @@
 package elemeOpenApi
 
 type APIClient struct {
-	Message    Message
-	Order      Order
-	Shop       Shop
-	Product    Product
-	User       User
-	File       File
-	Packs      Packs
-	Finance    Finance
-	Activity   Activity
-	Ugc        Ugc
-	Market     Market
-	Flow       Flow
-	Content    Content
-	Decoration Decoration
-	Diagnosis  Diagnosis
-	Card       Card
-	Cpc        Cpc
-	Sms        Sms
-	Data       Data
-	config     Config
+	Message         Message
+	Order           Order
+	Shop            Shop
+	Product         Product
+	User            User
+	File            File
+	Packs           Packs
+	Finance         Finance
+	Activity        Activity
+	Ugc             Ugc
+	Market          Market
+	Flow            Flow
+	Content         Content
+	Decoration      Decoration
+	Diagnosis       Diagnosis
+	Card            Card
+	Cpc             Cpc
+	Sms             Sms
+	Data            Data
+	config          Config
+	ShopCreditScore ShopCreditScore
 }
 
 type User struct {
@@ -194,7 +195,13 @@ type Chain struct {
 	config *Config
 }
 
-type Diagnosis struct{
+type Diagnosis struct {
+	config *Config
+}
+
+type ShopCreditScore struct {
+	Single Single
+	Chain  Chain
 	config *Config
 }
 
@@ -244,5 +251,8 @@ func (client *APIClient) SetConfig(config Config) {
 	client.Data.config = &client.config
 	client.Data.Single.config = &client.config
 	client.Data.Chain.config = &client.config
+	client.ShopCreditScore.config = &client.config
+	client.ShopCreditScore.Single.config = &client.config
+	client.ShopCreditScore.Chain.config = &client.config
 	client.Diagnosis.config = &client.config
 }
