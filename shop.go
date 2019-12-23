@@ -9,7 +9,7 @@ func (shop *Shop) GetShop(shopId_ int64) (interface{}, error) {
 	return APIInterface(shop.config, "eleme.shop.getShop", params)
 }
 
-// 更新店铺基本信息
+// 更新店铺信息
 // shopId 店铺Id
 // properties 店铺属性
 func (shop *Shop) UpdateShop(shopId_ int64, properties_ interface{}) (interface{}, error) {
@@ -17,6 +17,16 @@ func (shop *Shop) UpdateShop(shopId_ int64, properties_ interface{}) (interface{
 	params["shopId"] = shopId_
 	params["properties"] = properties_
 	return APIInterface(shop.config, "eleme.shop.updateShop", params)
+}
+
+// 更新店铺基本信息
+// shopId 店铺Id
+// properties 店铺基本属性
+func (shop *Shop) UpdateShopBasicInfo(shopId_ int64, properties_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["properties"] = properties_
+	return APIInterface(shop.config, "eleme.shop.updateShopBasicInfo", params)
 }
 
 // 批量获取店铺简要
