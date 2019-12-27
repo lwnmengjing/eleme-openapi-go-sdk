@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.15]
+	Release Date : 2019-12-27
+
+- [Feature] 金融服务新增接口
+
 ### [1.32.14]
 	Release Date : 2019-12-23
 

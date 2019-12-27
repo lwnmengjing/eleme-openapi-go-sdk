@@ -17,7 +17,7 @@ func (finance *Finance) QueryBalanceLog(request_ interface{}) (interface{}, erro
 	return APIInterface(finance.config, "eleme.finance.queryBalanceLog", params)
 }
 
-// 查询总店账单
+// 查询总店账单(旧接口，即将下线)
 // shopId 饿了么总店店铺id
 // query 查询条件
 func (finance *Finance) QueryHeadBills(shopId_ int64, query_ interface{}) (interface{}, error) {
@@ -27,7 +27,17 @@ func (finance *Finance) QueryHeadBills(shopId_ int64, query_ interface{}) (inter
 	return APIInterface(finance.config, "eleme.finance.queryHeadBills", params)
 }
 
-// 查询总店订单
+// 查询总店账单(新接口)
+// shopId 饿了么总店店铺id
+// query 查询条件
+func (finance *Finance) QueryHeadBillsNew(shopId_ int64, query_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["query"] = query_
+	return APIInterface(finance.config, "eleme.finance.queryHeadBillsNew", params)
+}
+
+// 查询总店订单(旧接口，即将下线)
 // shopId 饿了么总店店铺id
 // query 查询条件
 func (finance *Finance) QueryHeadOrders(shopId_ int64, query_ interface{}) (interface{}, error) {
@@ -37,7 +47,17 @@ func (finance *Finance) QueryHeadOrders(shopId_ int64, query_ interface{}) (inte
 	return APIInterface(finance.config, "eleme.finance.queryHeadOrders", params)
 }
 
-// 查询分店账单
+// 查询总店订单(新接口)
+// shopId 饿了么总店店铺id
+// query 查询条件
+func (finance *Finance) QueryHeadOrdersNew(shopId_ int64, query_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["query"] = query_
+	return APIInterface(finance.config, "eleme.finance.queryHeadOrdersNew", params)
+}
+
+// 查询分店账单(旧接口，即将下线)
 // shopId 饿了么分店店铺id
 // query 查询条件
 func (finance *Finance) QueryBranchBills(shopId_ int64, query_ interface{}) (interface{}, error) {
@@ -47,7 +67,17 @@ func (finance *Finance) QueryBranchBills(shopId_ int64, query_ interface{}) (int
 	return APIInterface(finance.config, "eleme.finance.queryBranchBills", params)
 }
 
-// 查询分店订单
+// 查询分店账单(新接口)
+// shopId 饿了么分店店铺id
+// query 查询条件
+func (finance *Finance) QueryBranchBillsNew(shopId_ int64, query_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["query"] = query_
+	return APIInterface(finance.config, "eleme.finance.queryBranchBillsNew", params)
+}
+
+// 查询分店订单(旧接口，即将下线)
 // shopId 饿了么分店店铺id
 // query 查询条件
 func (finance *Finance) QueryBranchOrders(shopId_ int64, query_ interface{}) (interface{}, error) {
@@ -57,7 +87,17 @@ func (finance *Finance) QueryBranchOrders(shopId_ int64, query_ interface{}) (in
 	return APIInterface(finance.config, "eleme.finance.queryBranchOrders", params)
 }
 
-// 查询订单
+// 查询分店订单(新接口)
+// shopId 饿了么分店店铺id
+// query 查询条件
+func (finance *Finance) QueryBranchOrdersNew(shopId_ int64, query_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["query"] = query_
+	return APIInterface(finance.config, "eleme.finance.queryBranchOrdersNew", params)
+}
+
+// 查询订单(旧接口，即将下线)
 // shopId 饿了么店铺id
 // orderId 订单id
 func (finance *Finance) GetOrder(shopId_ int64, orderId_ string) (interface{}, error) {
@@ -65,5 +105,15 @@ func (finance *Finance) GetOrder(shopId_ int64, orderId_ string) (interface{}, e
 	params["shopId"] = shopId_
 	params["orderId"] = orderId_
 	return APIInterface(finance.config, "eleme.finance.getOrder", params)
+}
+
+// 查询订单(新接口)
+// shopId 饿了么店铺id
+// orderId 订单id
+func (finance *Finance) GetOrderNew(shopId_ int64, orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["orderId"] = orderId_
+	return APIInterface(finance.config, "eleme.finance.getOrderNew", params)
 }
 
