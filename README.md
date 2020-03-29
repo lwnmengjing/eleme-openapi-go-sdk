@@ -136,6 +136,11 @@
 
 
 ## Change Log
+### [1.32.16]
+	Release Date : 2019-12-27
+
+- [Feature] 商品服务更新、新增接口
+
 ### [1.32.15]
 	Release Date : 2019-12-27
 
