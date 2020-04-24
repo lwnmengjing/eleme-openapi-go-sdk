@@ -318,41 +318,41 @@ func (category *Category) RemoveDayPartingStickTime(shopId_ int64, categoryId_ i
 // 添加套餐
 // categoryId 分类Id
 // oPackage 套餐属性
-func (package_ *Package) CreatePackage(categoryId_ int64, oPackage_ interface{}) (interface{}, error) {
+func (package *Package) CreatePackage(categoryId_ int64, oPackage_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["categoryId"] = categoryId_
 	params["oPackage"] = oPackage_
-	return APIInterface(package_.config, "eleme.product.package.createPackage", params)
+	return APIInterface(package.config, "eleme.product.package.createPackage", params)
 }
 
 // 修改套餐基本信息
 // itemId 新套餐id即OItem中的商品Id
 // categoryId 分类Id即OCategory中的分类Id
 // update 套餐基本信息
-func (package_ *Package) UpdatePackageContent(itemId_ int64, categoryId_ int64, update_ interface{}) (interface{}, error) {
+func (package *Package) UpdatePackageContent(itemId_ int64, categoryId_ int64, update_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
 	params["categoryId"] = categoryId_
 	params["update"] = update_
-	return APIInterface(package_.config, "eleme.product.package.updatePackageContent", params)
+	return APIInterface(package.config, "eleme.product.package.updatePackageContent", params)
 }
 
 // 修改套餐和主料的关联关系
 // itemId 新套餐id即OItem中的商品Id
 // packages 套餐关系
-func (package_ *Package) UpdatePackageRelation(itemId_ int64, packages_ interface{}) (interface{}, error) {
+func (package *Package) UpdatePackageRelation(itemId_ int64, packages_ interface{}) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
 	params["packages"] = packages_
-	return APIInterface(package_.config, "eleme.product.package.updatePackageRelation", params)
+	return APIInterface(package.config, "eleme.product.package.updatePackageRelation", params)
 }
 
 // 删除套餐
 // itemId 套餐Id
-func (package_ *Package) RemovePackage(itemId_ int64) (interface{}, error) {
+func (package *Package) RemovePackage(itemId_ int64) (interface{}, error) {
 	params := make(map[string]interface{})
 	params["itemId"] = itemId_
-	return APIInterface(package_.config, "eleme.product.package.removePackage", params)
+	return APIInterface(package.config, "eleme.product.package.removePackage", params)
 }
 
 // 获取一个分类下的所有商品
