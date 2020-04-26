@@ -22,6 +22,8 @@ type APIClient struct {
 	Data            Data
 	config          Config
 	ShopCreditScore ShopCreditScore
+	Enterprise 		Enterprise
+	Recruitment 	Recruitment
 }
 
 type User struct {
@@ -205,6 +207,14 @@ type ShopCreditScore struct {
 	config *Config
 }
 
+type Enterprise struct {
+	config *Config
+}
+
+type Recruitment struct {
+	config *Config
+}
+
 func NewAPIClient(config Config) APIClient {
 	client := APIClient{}
 	client.SetConfig(config)
@@ -255,4 +265,6 @@ func (client *APIClient) SetConfig(config Config) {
 	client.ShopCreditScore.Single.config = &client.config
 	client.ShopCreditScore.Chain.config = &client.config
 	client.Diagnosis.config = &client.config
+	client.Enterprise.config = &client.config
+	client.Recruitment.config = &client.config
 }
