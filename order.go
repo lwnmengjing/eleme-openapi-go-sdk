@@ -319,6 +319,18 @@ func (order *Order) ApplyRefund(orderId_ string, type_ interface{}, remark_ stri
 	return APIInterface(order.config, "eleme.order.applyRefund", params)
 }
 
+// 商家主动发起退单（企业到店买单订单）
+// orderId 订单Id
+// type 取消原因
+// remark 备注说明
+func (order *Order) ShopPayApplyRefund(orderId_ string, type_ interface{}, remark_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderId"] = orderId_
+	params["type"] = type_
+	params["remark"] = remark_
+	return APIInterface(order.config, "eleme.order.shopPayApplyRefund", params)
+}
+
 // 非自配送餐厅标记已出餐
 // orderId 订单Id
 func (order *Order) SetOrderPrepared(orderId_ string) (interface{}, error) {

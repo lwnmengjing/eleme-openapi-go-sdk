@@ -117,3 +117,23 @@ func (finance *Finance) GetOrderNew(shopId_ int64, orderId_ string) (interface{}
 	return APIInterface(finance.config, "eleme.finance.getOrderNew", params)
 }
 
+// 查询返现汇总信息账单
+// shopId 饿了么分店、单店、总店店铺id
+// query 查询条件
+func (finance *Finance) QueryAllowanceBills(shopId_ int64, query_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["query"] = query_
+	return APIInterface(finance.config, "eleme.finance.queryAllowanceBills", params)
+}
+
+// 查询返现每日详单
+// shopId 饿了么分店、单店、总店店铺id
+// query 查询条件
+func (finance *Finance) QueryAllowanceBillDetail(shopId_ int64, query_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["shopId"] = shopId_
+	params["query"] = query_
+	return APIInterface(finance.config, "eleme.finance.queryAllowanceBillDetail", params)
+}
+
