@@ -41,3 +41,19 @@ func (content *Content) GetVideoBindInfo(videoId_ int64) (interface{}, error) {
 	return APIInterface(content.config, "eleme.content.getVideoBindInfo", params)
 }
 
+// 获取视频上传token
+// scene 场景码
+func (content *Content) GetUploadToken(scene_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["scene"] = scene_
+	return APIInterface(content.config, "eleme.content.getUploadToken", params)
+}
+
+// 发布视频
+// request 内容发布对象
+func (content *Content) PublishVideoContent(request_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["request"] = request_
+	return APIInterface(content.config, "eleme.content.publishVideoContent", params)
+}
+

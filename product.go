@@ -795,6 +795,24 @@ func (item *Item) UpdateItemGroup(shopId_ int64, itemId_ int64, categoryId_ int6
 	return APIInterface(item.config, "eleme.product.item.updateItemGroup", params)
 }
 
+// 绑定商品视频
+// itemId 商品id
+// contentId 内容id
+func (item *Item) BindVideo(itemId_ int64, contentId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	params["contentId"] = contentId_
+	return APIInterface(item.config, "eleme.product.item.bindVideo", params)
+}
+
+// 解绑商品视频
+// itemId 商品id
+func (item *Item) UnbindVideo(itemId_ int64) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["itemId"] = itemId_
+	return APIInterface(item.config, "eleme.product.item.unbindVideo", params)
+}
+
 // 查询连锁总店商品信息
 // iid 连锁总店商品Id
 func (product *Product) GetChainItem(iid_ string) (interface{}, error) {

@@ -233,6 +233,46 @@ func (coupon *Coupon) UpdateCouponStatus(criteria_ interface{}, type_ int) (inte
 	return APIInterface(coupon.config, "eleme.activity.coupon.updateCouponStatus", params)
 }
 
+// 创建券模板
+// activityTemplate 创建券模板对象
+func (coupon *Coupon) CreateActivityTemplateV2(activityTemplate_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["activityTemplate"] = activityTemplate_
+	return APIInterface(coupon.config, "eleme.activity.coupon.createActivityTemplateV2", params)
+}
+
+// 修改券模板
+// updateModel 修改券模板对象
+func (coupon *Coupon) ModifyActivityTemplateV2(updateModel_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["updateModel"] = updateModel_
+	return APIInterface(coupon.config, "eleme.activity.coupon.modifyActivityTemplateV2", params)
+}
+
+// 作废券模板
+// invalidModel 作废券模板对象
+func (coupon *Coupon) InvalidActivityTemplateV2(invalidModel_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["invalidModel"] = invalidModel_
+	return APIInterface(coupon.config, "eleme.activity.coupon.invalidActivityTemplateV2", params)
+}
+
+// 查询券模板
+// queryModel 查询券模板对象
+func (coupon *Coupon) QueryByTemplateIdV2(queryModel_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["queryModel"] = queryModel_
+	return APIInterface(coupon.config, "eleme.activity.coupon.queryByTemplateIdV2", params)
+}
+
+// 根据券模板发券
+// presentWithTemplateModel 发券对象
+func (coupon *Coupon) PresentCouponWithTemplateIdV2(presentWithTemplateModel_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["presentWithTemplateModel"] = presentWithTemplateModel_
+	return APIInterface(coupon.config, "eleme.activity.coupon.presentCouponWithTemplateIdV2", params)
+}
+
 // 查询订单内营销相关数据
 // orderId 饿了么订单Id
 func (marketing *Marketing) QueryOrderSubsidy(orderId_ string) (interface{}, error) {

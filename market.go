@@ -39,3 +39,13 @@ func (market *Market) ConfirmOrder(orderNo_ string) (interface{}, error) {
 	return APIInterface(market.config, "eleme.market.confirmOrder", params)
 }
 
+// 物联网设备确认出餐
+// deviceInfo 设备信息
+// orderId 订单id
+func (market *Market) MarkFinishCookingTime(deviceInfo_ interface{}, orderId_ string) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["deviceInfo"] = deviceInfo_
+	params["orderId"] = orderId_
+	return APIInterface(market.config, "eleme.market.markFinishCookingTime", params)
+}
+

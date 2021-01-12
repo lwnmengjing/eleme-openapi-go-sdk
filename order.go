@@ -435,3 +435,11 @@ func (order *Order) QueryCallAvailable(orderId_ string) (interface{}, error) {
 	return APIInterface(order.config, "eleme.order.queryCallAvailable", params)
 }
 
+// 批量获取订单退款信息V2
+// orderIds 订单Id列表
+func (order *Order) BatchGetRefundOrders(orderIds_ interface{}) (interface{}, error) {
+	params := make(map[string]interface{})
+	params["orderIds"] = orderIds_
+	return APIInterface(order.config, "eleme.order.batchGetRefundOrders", params)
+}
+
