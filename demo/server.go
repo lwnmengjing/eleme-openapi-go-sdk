@@ -2,7 +2,6 @@ package main
 
 import (
 	"crypto/md5"
-	openapi "eleme-openapi-go-sdk"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -11,6 +10,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	openapi "github.com/lwnmengjing/eleme-openapi-go-sdk"
 )
 
 var conf openapi.Config
@@ -171,7 +172,7 @@ func pushHandler(w http.ResponseWriter, r *http.Request) {
 		json.Unmarshal([]byte(msg.Message), &order)
 		fmt.Println(order.OrderID)
 		eleme := openapi.NewAPIClient(conf)
-		eleme.Order.ConfirmOrder(order.OrderID)
+		eleme.Order.ConfirmOrderLite(order.OrderID)
 		defer r.Body.Close()
 	}
 }
